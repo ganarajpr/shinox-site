@@ -117,6 +117,11 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .view.zoomed{cursor:zoom-out}
 .view img{position:absolute;inset:40px 24px 56px;width:calc(100% - 48px);height:calc(100% - 96px);object-fit:contain;transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .2s;will-change:transform}
 .view.zoomed img{transform:scale(2.4);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.view.life{padding:0}
+.view.life img{inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 55%}
+.view.life .hint{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.thumbs button.life{padding:0;overflow:hidden}
+.thumbs button.life img{object-fit:cover}
 .view .hint{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:13px;color:var(--muted);pointer-events:none}
 .close{position:absolute;top:16px;right:16px;z-index:5;width:44px;height:44px;border-radius:50%;border:0;background:#fff;cursor:pointer;display:grid;place-items:center;box-shadow:0 0 0 1px var(--line)}
 .close svg{width:18px;height:18px}
@@ -139,6 +144,23 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .pager button:last-child{text-align:right}
 .pager button:hover{color:var(--teal)}
 .pager b{display:block;font-weight:500;color:var(--teal-deep)}
+
+/* at home strip */
+#home{background:var(--mist);overflow:hidden}
+#home .head{margin-bottom:32px}
+.strip-nav{display:flex;gap:8px;justify-content:flex-end}
+.strip-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;color:var(--teal)}
+.strip-nav button:hover{border-color:var(--teal)}
+.strip-nav svg{width:18px;height:18px}
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:min(560px,84%);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(16px,(100% - 1200px)/2);padding:0 max(16px,(100% - 1200px)/2) 8px;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip button{all:unset;cursor:pointer;scroll-snap-align:start;display:flex;flex-direction:column;gap:12px}
+.strip button:focus-visible img{outline:2px solid var(--teal);outline-offset:3px}
+.strip img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:20px;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.strip button:hover img{transform:scale(1.015)}
+.strip .cap{display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.strip .cap b{font-weight:500;color:var(--teal-deep)}
+.strip .cap span{color:var(--muted)}
 
 /* promise */
 .promise{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
@@ -261,6 +283,22 @@ footer .logo{width:112px}
     <div class="filters" id="filters" aria-label="Show products for"></div>
     <div class="grid" id="grid"></div>
   </div>
+</section>
+
+<section id="home">
+  <div class="wrap">
+    <div class="head">
+      <h2>Made for real Indian homes.</h2>
+      <div>
+        <p>From the kadai at the sink to the diya on the pooja shelf. Choose a photo to see the product.</p>
+        <div class="strip-nav" style="margin-top:20px">
+          <button id="s-prev" aria-label="Previous photos"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 3 5 9l6 6"/></svg></button>
+          <button id="s-next" aria-label="Next photos"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m7 3 6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="strip" id="strip"></div>
 </section>
 
 <section id="why">
@@ -418,6 +456,9 @@ const P=[
   v:[{n:"Original",k:"silver",c:"#A9B0B5",t:"#ECEFF1",views:[0,2,3]}]}
 ];
 const src=(k,n)=>`img/v/${k}-${n}.webp`;
+// which variant appears in each product's lifestyle photo (img/life/<id>.webp)
+const LIFE={floor:0,dish:0,glass:0,toilet:0,hand:2,mist:1,fabric:0,metal:0,silver:0};
+P.forEach(p=>p.life=LIFE[p.id]);
 const $=id=>document.getElementById(id);
 const pick=P.map(()=>0); // chosen variant per product
 
@@ -455,6 +496,18 @@ P.forEach((p,i)=>{
 /* preload variant fronts once idle */
 (window.requestIdleCallback||setTimeout)(()=>P.forEach(p=>p.v.slice(1).forEach(v=>{new Image().src=src(v.k,0)})));
 
+/* at home strip */
+P.forEach((p,i)=>{
+  const b=document.createElement('button');
+  b.setAttribute('aria-label',`${p.name} at home, open details`);
+  b.innerHTML=`<img src="img/life/${p.id}-sm.webp" srcset="img/life/${p.id}-sm.webp 720w, img/life/${p.id}.webp 1536w" sizes="(max-width:700px) 84vw, 560px" alt="Shinox ${p.name} in use at home" loading="lazy"><div class="cap"><b>${p.name}</b><span>${p.room}</span></div>`;
+  b.onclick=()=>openSheet(i,p.life);
+  $('strip').appendChild(b);
+});
+const step=()=>$('strip').querySelector('button').getBoundingClientRect().width+18;
+$('s-prev').onclick=()=>$('strip').scrollBy({left:-step(),behavior:'smooth'});
+$('s-next').onclick=()=>$('strip').scrollBy({left:step(),behavior:'smooth'});
+
 /* filters */
 const groups=['All',...new Set(P.map(p=>p.group))];
 $('filters').innerHTML=groups.map((g,i)=>`<button aria-pressed="${i===0}">${g}</button>`).join('');
@@ -482,22 +535,27 @@ function setProduct(i,v){
   const pr=P[(i-1+P.length)%P.length],nx=P[(i+1)%P.length];
   $('d-prev').innerHTML=`Previous<b>${pr.name}</b>`;$('d-next').innerHTML=`Next<b>${nx.name}</b>`;
   sheet.style.setProperty('--tint',p.v[v].t);$('d-gallery').style.setProperty('--tint',p.v[v].t);
-  const vs=p.v[v].views;
-  $('d-thumbs').innerHTML=vs.map((n,j)=>`<button aria-label="${VIEWS[n]} view" aria-current="${j===0}"><img src="${src(p.v[v].k,n)}" alt=""></button>`).join('');
+  const vv=p.v[v];
+  const items=vv.views.map(n=>({src:src(vv.k,n),thumb:src(vv.k,n),label:VIEWS[n],life:false}));
+  const life={src:`img/life/${p.id}.webp`,thumb:`img/life/${p.id}-sm.webp`,label:'In use',life:true};
+  if(p.life===v) items.unshift(life); else items.push(life);
+  cur.items=items;
+  $('d-thumbs').innerHTML=items.map((it,j)=>`<button class="${it.life?'life':''}" aria-label="${it.label} view" aria-current="${j===0}"><img src="${it.thumb}" alt=""></button>`).join('');
   $('d-thumbs').querySelectorAll('button').forEach((b,j)=>b.onclick=()=>setView(j));
-  $('d-thumbs').style.display=vs.length>1?'':'none';
   setView(0);
   $('d-ask').onclick=()=>{$('f-msg').value=`Hi, I'd like to know more about Shinox ${$('d-name').textContent}.`;closeSheet()};
   history.replaceState(null,'',`#p/${p.v[v].k}`);
 }
 function setView(j){
-  cur.view=j;const p=P[cur.p],vv=p.v[cur.v],n=vv.views[j];
+  cur.view=j;const p=P[cur.p],vv=p.v[cur.v],it=cur.items[j];
   unzoom();
   $('d-thumbs').querySelectorAll('button').forEach((b,k)=>b.setAttribute('aria-current',k===j));
-  dimg.style.opacity=0;const im=new Image();im.src=src(vv.k,n);
-  im.onload=()=>{dimg.src=im.src;dimg.alt=`Shinox ${vv.n==='Original'?'':vv.n+' '}${p.name}, ${VIEWS[n].toLowerCase()} view`;dimg.style.opacity=1};
+  dimg.style.opacity=0;const im=new Image();im.src=it.src;
+  im.onload=()=>{view.classList.toggle('life',it.life);dimg.src=im.src;
+    $('d-hint').textContent=it.life?'Click to zoom in':'Click the bottle to read the label';
+    dimg.alt=it.life?`Shinox ${p.name} in use at home`:`Shinox ${vv.n==='Original'?'':vv.n+' '}${p.name}, ${it.label.toLowerCase()} view`;dimg.style.opacity=1};
 }
-function unzoom(){view.classList.remove('zoomed');dimg.style.transformOrigin='50% 50%';$('d-hint').textContent='Click the bottle to read the label'}
+function unzoom(){view.classList.remove('zoomed');dimg.style.transformOrigin='50% 50%';$('d-hint').textContent=view.classList.contains('life')?'Click to zoom in':'Click the bottle to read the label'}
 view.addEventListener('click',e=>{
   if(view.classList.contains('zoomed')){unzoom();return}
   const r=dimg.getBoundingClientRect();
@@ -516,7 +574,7 @@ sheet.addEventListener('click',e=>{if(e.target===sheet)closeSheet()});
 $('d-prev').onclick=()=>setProduct((cur.p-1+P.length)%P.length,0);
 $('d-next').onclick=()=>setProduct((cur.p+1)%P.length,0);
 sheet.addEventListener('keydown',e=>{
-  const vs=P[cur.p].v[cur.v].views.length;
+  const vs=cur.items.length;
   if(e.key==='ArrowRight'){e.preventDefault();setView((cur.view+1)%vs)}
   if(e.key==='ArrowLeft'){e.preventDefault();setView((cur.view-1+vs)%vs)}
 });
