@@ -157,11 +157,11 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .strip .cap span{color:var(--muted)}
 
 /* image + text sections */
-.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:center}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:stretch}
 .split.flip > figure{order:2}
-.split figure{margin:0}
-.split figure img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:28px}
-.split .body{display:flex;flex-direction:column;gap:22px}
+.split figure{margin:0;display:flex}
+.split figure img{width:100%;height:100%;min-height:380px;object-fit:cover;border-radius:28px}
+.split .body{display:flex;flex-direction:column;gap:22px;justify-content:center}
 .split .body > p{max-width:54ch}
 .split .body > p.muted{color:var(--muted)}
 
@@ -184,10 +184,13 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .also{font-size:15px;color:var(--muted);border-left:2px solid var(--teal);padding-left:16px}
 
 #mission{background:var(--grey)}
-.mv{display:grid;gap:18px}
-.mv article{background:var(--paper);border-radius:22px;padding:28px 30px}
-.mv h3{font-size:15px;font-weight:500;color:var(--teal);letter-spacing:0}
-.mv p{font-size:clamp(20px,2vw,26px);line-height:1.32;letter-spacing:-.015em;color:var(--teal-deep);margin-top:10px}
+.banner{margin:0}
+.banner img{width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;object-position:50% 62%;border-radius:28px}
+.mv{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);margin-top:clamp(36px,5vw,56px)}
+.mv h3{font-size:14px;font-weight:500;color:var(--teal);letter-spacing:0;margin-bottom:14px}
+.mv .vision p{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(28px,3.2vw,40px);line-height:1.2;color:var(--teal-deep);max-width:16ch}
+.mv .mission p{font-size:18px;line-height:1.65;color:var(--ink);max-width:56ch}
+.mv .mission p + p{margin-top:12px;color:var(--teal);font-weight:500}
 
 #team{background:var(--paper)}
 .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -233,6 +236,9 @@ footer .tag{color:var(--teal);font-size:14px}
 @media (max-width:960px){
   .hero .top,.contact,.head,.split{grid-template-columns:1fr}
   .split.flip > figure{order:0}
+  .split figure img{height:auto;min-height:0;aspect-ratio:3/2}
+  .mv{grid-template-columns:1fr}
+  .banner img{aspect-ratio:3/2}
   .team.core{grid-template-columns:repeat(2,minmax(0,1fr))}
   dialog{width:100vw;height:100dvh;border-radius:0}
   dialog[open]{grid-template-columns:1fr;grid-template-rows:58dvh auto;overflow:auto}
@@ -380,17 +386,22 @@ footer .tag{color:var(--teal);font-size:14px}
 </section>
 
 <section id="mission">
-  <div class="wrap split">
-    <figure><img src="img/sections/mission.webp" alt="A mother and daughter folding fresh laundry in a bright, clean living room" loading="lazy" width="1536" height="1024"></figure>
-    <div class="body">
-      <div>
-        <h2>Mission &amp; Vision</h2>
-        <p class="lead">Because true cleanliness goes beyond appearances.</p>
-      </div>
-      <div class="mv">
-        <article><h3>Our vision</h3><p>To set the standard for powerful, affordable hygiene solutions.</p></article>
-        <article><h3>Our mission</h3><p>To deliver exceptional home-care and hygiene solutions that combine performance, quality and everyday comfort, while championing bamboo-based essentials, responsible innovation and sustainable choices for cleaner homes, healthier lifestyles and a better tomorrow.</p></article>
-      </div>
+  <div class="wrap">
+    <div class="head">
+      <h2>Mission &amp; Vision</h2>
+      <p>Because true cleanliness goes beyond appearances. It reflects the care, comfort and confidence you deserve.</p>
+    </div>
+    <figure class="banner"><img src="img/sections/mission.webp" alt="A mother and daughter folding fresh laundry in a bright, clean living room" loading="lazy" width="1536" height="1024"></figure>
+    <div class="mv">
+      <article class="vision">
+        <h3>Our vision</h3>
+        <p>To set the standard for powerful, affordable hygiene solutions.</p>
+      </article>
+      <article class="mission">
+        <h3>Our mission</h3>
+        <p>To deliver exceptional home-care and hygiene solutions that combine performance, quality and everyday comfort, while championing bamboo-based essentials, responsible innovation and sustainable choices.</p>
+        <p>For cleaner homes, healthier lifestyles and a better tomorrow.</p>
+      </article>
     </div>
   </div>
 </section>
