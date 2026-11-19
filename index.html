@@ -51,10 +51,14 @@ header.scrolled{border-color:var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:70px}
 .mark{color:var(--logo);text-decoration:none;display:block}
 .logo{display:block;width:140px;aspect-ratio:439/95;background:currentColor;-webkit-mask:url(img/logo.png) center/contain no-repeat;mask:url(img/logo.png) center/contain no-repeat}
-nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
-nav a{text-decoration:none;font-size:15px;color:var(--muted)}
-nav a:hover{color:var(--teal)}
-nav .cta{color:var(--teal);font-weight:500}
+header:hover,header.scrolled{box-shadow:0 6px 24px -12px rgba(0,59,44,.28)}
+header{transition:border-color .2s,box-shadow .25s}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;align-items:center}
+nav a{display:block;text-decoration:none;font-size:15px;color:var(--ink);padding:8px 14px;border-radius:999px;transition:background-color .18s,color .18s,transform .18s}
+nav a:hover{background:var(--beige-deep);color:var(--teal-deep);transform:translateY(-1px)}
+nav a[aria-current=true]{background:var(--beige);color:var(--teal);font-weight:500}
+nav .cta{background:var(--teal);color:#fff;font-weight:500;margin-left:8px}
+nav .cta:hover,nav .cta[aria-current=true]{background:var(--teal-deep);color:#fff}
 .menu{display:none;background:none;border:0;color:var(--teal);font-weight:500;padding:8px 0;cursor:pointer}
 
 /* hero */
@@ -65,20 +69,23 @@ nav .cta{color:var(--teal);font-weight:500}
 .hero-foot{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
 .hero-foot p{max-width:40ch;color:var(--muted)}
 .shelf{margin-top:clamp(40px,6vw,64px)}
-.shelf-scroll{overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px;--sw:inherit}
-.shelf-scroll > *{min-width:var(--sw,0px)}
-.shelf-scroll::-webkit-scrollbar{display:none}
-.shelf-row{display:flex;align-items:flex-end;justify-content:space-between;height:var(--sh,260px);width:max(100%,var(--sw,0px))}
-.shelf-group{display:flex;align-items:flex-end;gap:var(--bg,4px);height:100%;flex:none}
+.tiers{display:grid;gap:clamp(22px,3vw,36px)}
+.tier-scroll{overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px}
+.tier-scroll::-webkit-scrollbar{display:none}
+.tier{min-width:var(--tw,0px);padding-bottom:44px}
+.shelf-row{display:flex;align-items:flex-end;justify-content:space-between;height:var(--sh,240px);padding:0 var(--pad,32px)}
+.shelf-group{display:flex;align-items:flex-end;gap:var(--bgap,14px);height:100%;flex:none;position:relative}
+.shelf-group .cap{position:absolute;left:50%;transform:translateX(-50%);top:calc(100% + 24px);white-space:nowrap;font-size:13px;color:var(--muted)}
+.shelf-group:first-child .cap{left:0;transform:none}
+.shelf-group:last-child .cap{left:auto;right:0;transform:none}
+.shelf-group .cap b{font-weight:500;color:var(--teal-deep)}
 .shelf-row button{all:unset;cursor:pointer;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative}
-.shelf-row img{height:calc(var(--h) * var(--sh,260px));width:auto;max-width:none;transform-origin:50% 100%;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.shelf-row img{height:calc(var(--h) * var(--sh,240px));width:auto;max-width:none;transform-origin:50% 100%;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .shelf-row button:hover img,.shelf-row button:focus-visible img{transform:translateY(-10px)}
 .shelf-row button:focus-visible{outline:none}
-.shelf-row .tag{position:absolute;bottom:-36px;white-space:nowrap;font-size:13px;color:var(--teal);opacity:0;transition:opacity .2s;pointer-events:none}
-.shelf-row button:hover .tag,.shelf-row button:focus-visible .tag{opacity:1}
-.shelf-gap{flex:0 0 12px}
-.ledge{height:14px;background:var(--teal);border-radius:2px;width:max(100%,var(--sw,0px))}
-.shelf-note{display:flex;justify-content:space-between;gap:16px;padding:50px 0 20px;color:var(--muted);font-size:14px;border-bottom:1px solid var(--line)}
+.shelf-row button:focus-visible img{filter:drop-shadow(0 0 2px var(--teal))}
+.ledge{height:12px;background:var(--teal);border-radius:2px}
+.shelf-note{display:flex;justify-content:space-between;gap:16px;padding:4px 0 20px;color:var(--muted);font-size:14px;border-bottom:1px solid var(--line)}
 @media (prefers-reduced-motion:no-preference){
   .shelf-row button{animation:land .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 45ms + 150ms)}
   @keyframes land{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -263,10 +270,16 @@ footer .tag{color:var(--teal);font-size:14px}
 @media (max-width:760px){
   nav ul{display:none;position:absolute;top:70px;left:0;right:0;background:var(--paper);flex-direction:column;gap:0;padding:8px 16px 16px;border-bottom:1px solid var(--line)}
   nav ul.open{display:flex}
-  nav li a{display:block;padding:12px 0;font-size:17px}
+  nav li a{display:block;padding:12px 14px;font-size:17px}
+  nav .cta{margin:8px 0 0;text-align:center}
   .menu{display:block}
-  .shelf-row .tag{display:none}
   .shelf-note span:last-child{display:none}
+  .shelf-group .cap{white-space:normal;width:max-content;max-width:92px;text-align:center;font-size:12px;line-height:1.3;top:calc(100% + 20px)}
+  .shelf-group .cap b{display:block}
+  .shelf-group:first-child .cap{text-align:left}
+  .shelf-group:last-child .cap{left:50%;right:auto;transform:translateX(-50%);text-align:center}
+  .tier{padding-right:24px}
+  .tier{padding-bottom:52px}
   .promise{grid-template-columns:1fr}
   .promise article,.promise article+article{padding:26px 0;border-left:0;border-bottom:1px solid var(--line)}
   .promise .glyph{margin-bottom:14px}
@@ -316,11 +329,8 @@ footer .tag{color:var(--teal);font-size:14px}
       </div>
     </div>
     <div class="shelf" aria-label="Every Shinox product and variant">
-      <div class="shelf-scroll">
-        <div class="shelf-row" id="shelf"></div>
-        <div class="ledge"></div>
-      </div>
-      <div class="shelf-note"><span>All 17 variants. No artificial colouring.</span><span>Choose a bottle to see it up close</span></div>
+      <div class="tiers" id="tiers"></div>
+      <div class="shelf-note"><span>All 17 variants. No artificial colouring.</span><span>Choose any bottle to see it up close</span></div>
     </div>
   </div>
 </div>
@@ -565,32 +575,44 @@ const $=id=>document.getElementById(id);
 const pick=P.map(()=>0);
 const label=(p,v)=>(p.v.length>1?p.v[v].n+' ':'')+p.name;
 
-/* shelf: every variant, grouped by product */
+/* shelves: every variant on two tiers, like the catalogue's retail collection */
+const TIERS=[['mist','hand','metal','silver'],['floor','dish','glass','toilet','fabric']];
 let si=0;
-P.forEach((p,i)=>{
-  if(i) $('shelf').insertAdjacentHTML('beforeend','<span class="shelf-gap"></span>');
-  const g=document.createElement('div');g.className='shelf-group';g.style.setProperty('--n',p.v.length*(p.id==='fabric'?1.5:1));
-  p.v.forEach((v,j)=>{
-    const b=document.createElement('button');b.style.setProperty('--i',si++);
-    b.setAttribute('aria-label',`${label(p,j)}, open details`);
-    b.innerHTML=`<img src="img/shelf/${v.k}.webp" alt="" style="--h:${p.h}"><span class="tag">${label(p,j)}</span>`;
-    b.onclick=()=>openSheet(i,j);g.appendChild(b);
+TIERS.forEach(ids=>{
+  const sc=document.createElement('div');sc.className='tier-scroll';
+  sc.innerHTML='<div class="tier"><div class="shelf-row"></div><div class="ledge"></div></div>';
+  const row=sc.querySelector('.shelf-row');
+  ids.forEach(id=>{
+    const i=P.findIndex(p=>p.id===id),p=P[i];
+    const g=document.createElement('div');g.className='shelf-group';
+    p.v.forEach((v,j)=>{
+      const b=document.createElement('button');b.style.setProperty('--i',si++);
+      b.setAttribute('aria-label',`${label(p,j)}, open details`);b.title=label(p,j);
+      b.innerHTML=`<img src="img/shelf/${v.k}.webp" alt="" style="--h:${p.h}">`;
+      b.onclick=()=>openSheet(i,j);g.appendChild(b);
+    });
+    g.insertAdjacentHTML('beforeend',`<span class="cap"><b>${p.name}</b> ${p.size}</span>`);
+    row.appendChild(g);
   });
-  $('shelf').appendChild(g);
+  $('tiers').appendChild(sc);
 });
-// size the shelf so every bottle is drawn by height (same size = same height) and the row fits the width
+// one scale for both tiers: every bottle is drawn by height, so the same size means the same height
 function fitShelf(){
-  const row=$('shelf'),imgs=[...row.querySelectorAll('img')];
+  const imgs=[...$('tiers').querySelectorAll('img')];
   if(imgs.some(i=>!i.naturalWidth)) return;
-  const sum=imgs.reduce((s,i)=>s+i.naturalWidth/i.naturalHeight*parseFloat(i.style.getPropertyValue('--h')),0);
-  const gaps=(P.length-1)*12+(imgs.length-P.length)*4;
-  const avail=row.parentElement.clientWidth-32;
-  const sh=Math.max(170,Math.min(330,window.innerHeight*.42,(avail-gaps)/sum));
-  row.style.setProperty('--sh',sh+'px');
-  const need=sum*sh+gaps;
-  document.querySelector('.shelf').style.setProperty('--sw',need>avail?need+'px':'0px');
+  const narrow=innerWidth<760,B=narrow?8:16,G=narrow?60:48,pad=narrow?8:32;
+  const avail=$('tiers').clientWidth;
+  const tiers=[...$('tiers').querySelectorAll('.tier')].map(t=>{
+    const im=[...t.querySelectorAll('img')],groups=t.querySelectorAll('.shelf-group').length;
+    return {t,sum:im.reduce((s,i)=>s+i.naturalWidth/i.naturalHeight*parseFloat(i.style.getPropertyValue('--h')),0),gaps:(groups-1)*G+(im.length-groups)*B+2*pad};
+  });
+  const sh=Math.max(150,Math.min(290,innerHeight*.32,...tiers.map(x=>(avail-x.gaps)/x.sum)));
+  tiers.forEach(x=>{
+    x.t.querySelector('.shelf-row').style.cssText=`--sh:${sh}px;--bgap:${B}px;--pad:${pad}px`;
+    const need=x.sum*sh+x.gaps;x.t.style.setProperty('--tw',need>avail?need+'px':'0px');
+  });
 }
-$('shelf').querySelectorAll('img').forEach(i=>i.addEventListener('load',fitShelf));
+$('tiers').querySelectorAll('img').forEach(i=>i.addEventListener('load',fitShelf));
 addEventListener('resize',fitShelf);fitShelf();
 
 /* grid */
@@ -700,6 +722,9 @@ const m=location.hash.match(/^#p\/([\w-]+)/);
 if(m){P.forEach((p,i)=>p.v.forEach((v,j)=>{if(v.k===m[1])openSheet(i,j)}))}
 
 /* page chrome */
+const navLinks=[...document.querySelectorAll('nav a[href^="#"]')];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
+navLinks.forEach(a=>{const t=document.querySelector(a.getAttribute('href'));if(t)spy.observe(t)});
 document.querySelectorAll('a.mark').forEach(a=>a.addEventListener('click',e=>{
   e.preventDefault();scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   history.replaceState(null,'',location.pathname+location.search);
