@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shinox Home Care</title>
 <meta name="description" content="Biodegradable home cleaners from Bengaluru, for every room: floors, dishes, glass, bathroom, hands, laundry, metal and silver.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#01543F">
+<meta property="og:title" content="Shinox Home Care">
+<meta property="og:description" content="Biodegradable home cleaners for every room, made in Bengaluru.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
@@ -43,8 +48,8 @@ p{margin:0}
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
 header.scrolled{border-color:var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:68px}
-.mark{font-weight:600;font-size:21px;letter-spacing:.14em;color:var(--teal);text-decoration:none}
-.mark span{display:inline-block;width:.7em;height:.7em;border:2.5px solid currentColor;border-radius:50%;margin:0 .02em;vertical-align:-.02em}
+.mark{color:var(--teal);text-decoration:none;display:block}
+.logo{display:block;width:136px;aspect-ratio:439/95;background:currentColor;-webkit-mask:url(img/logo.png) center/contain no-repeat;mask:url(img/logo.png) center/contain no-repeat}
 nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
 nav a{text-decoration:none;font-size:15px;color:var(--muted)}
 nav a:hover{color:var(--teal)}
@@ -176,7 +181,8 @@ form .btn:hover{background:#E3EEEA}
 .form-note{grid-column:1/-1;font-size:14px;color:#C5DAD2;min-height:1.4em}
 footer{background:var(--teal-deep);color:#9FBDB2;font-size:14px;padding:36px 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;align-items:center}
-footer .mark{color:#fff;font-size:17px}
+footer .mark{color:#fff}
+footer .logo{width:112px}
 
 @media (max-width:960px){
   .hero .top,.story,.mission,.contact,.head{grid-template-columns:1fr}
@@ -215,7 +221,7 @@ footer .mark{color:#fff;font-size:17px}
 
 <header id="top">
   <div class="wrap bar">
-    <a class="mark" href="#top" aria-label="Shinox home">SHIN<span></span>X</a>
+    <a class="mark" href="#top" aria-label="Shinox home"><span class="logo"></span></a>
     <nav aria-label="Main">
       <button class="menu" aria-expanded="false" aria-controls="navlist">Menu</button>
       <ul id="navlist">
@@ -336,7 +342,7 @@ footer .mark{color:#fff;font-size:17px}
 
 <footer>
   <div class="wrap">
-    <a class="mark" href="#top">SHIN<span></span>X</a>
+    <a class="mark" href="#top" aria-label="Back to top"><span class="logo"></span></a>
     <span>Manufactured by Lakshmi Enterprises, Bengaluru. UDYAM-KR-03-0583718</span>
     <span>© <span id="yr"></span> Shinox</span>
   </div>
