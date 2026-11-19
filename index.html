@@ -12,45 +12,60 @@
 <meta property="og:description" content="Make It Shine. Home-care and hygiene products for every room, made in Bengaluru.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --teal:#01543F;
   --teal-deep:#003B2C;
-  --beige:#F4EDE2;
-  --beige-deep:#E9DECB;
-  --grey:#EDEEEB;
-  --paper:#FBF8F3;
+  --beige:#E9DDC8;
+  --beige-deep:#DCCBAE;
+  --grey:#E2E4E1;
+  --paper:#F2EADC;
+  --gold:#B8954A;
+  --gold-soft:#D9C38F;
   --ink:#1A2420;
   --muted:#5E655F;
   --line:rgba(1,84,63,.16);
   --logo:#000000;
-  --sans:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --serif:"Newsreader",Georgia,serif;
+  --sans:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Cormorant",Georgia,serif;
   --wrap:min(1200px,100% - 32px);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden}
 img{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
 .wrap{width:var(--wrap);margin-inline:auto}
-h1,h2,h3{font-weight:500;letter-spacing:-.025em;margin:0;color:var(--teal-deep)}
-h2{font-size:clamp(34px,4.6vw,56px);line-height:1.04}
-h3{font-size:20px;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;margin:0;color:var(--teal-deep)}
+h2{font-size:clamp(42px,5.4vw,68px);line-height:1}
+h3{font-size:25px;letter-spacing:0;line-height:1.15}
 p{margin:0}
 .btn{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;text-decoration:none;font-weight:500;font-size:16px;padding:14px 24px;border-radius:999px;border:0;cursor:pointer;transition:background .15s}
 .btn:hover{background:var(--teal-deep)}
 
+/* opening logo intro */
+.intro{position:fixed;inset:0;z-index:100;background:var(--paper);display:grid;place-items:center}
+.intro .stack{display:flex;flex-direction:column;align-items:center;gap:22px}
+.intro .logo{width:min(72vw,620px);color:var(--logo);background:var(--logo);transform-origin:0 0}
+.intro .tagline{font-size:clamp(12px,1.4vw,17px);gap:16px}
+.intro .tagline::before,.intro .tagline::after{width:clamp(30px,6vw,80px)}
+@media (prefers-reduced-motion:no-preference){.intro .stack{animation:introIn 1s cubic-bezier(.2,.8,.2,1) both}@keyframes introIn{from{opacity:0;transform:scale(1.08)}}}
+body.intro-on{overflow:hidden}
+body.intro-on header .brandmark{visibility:hidden}
+body.intro-on .shelf-row button{animation-play-state:paused}
+
 /* header */
-header{position:sticky;top:0;z-index:20;background:rgba(251,248,243,.92);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+header{position:sticky;top:0;z-index:20;background:rgba(242,234,220,.94);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
 header.scrolled{border-color:var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;height:70px}
-.mark{color:var(--logo);text-decoration:none;display:block}
-.logo{display:block;width:140px;aspect-ratio:439/95;background:currentColor;-webkit-mask:url(img/logo.png) center/contain no-repeat;mask:url(img/logo.png) center/contain no-repeat}
+.bar{display:flex;align-items:center;justify-content:space-between;height:88px}
+.mark{color:var(--logo);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:5px}
+.tagline{display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:10.5px;letter-spacing:.32em;color:var(--teal);white-space:nowrap;padding-left:.32em}
+.tagline::before,.tagline::after{content:"";width:18px;height:1px;background:var(--gold)}
+.logo{display:block;width:176px;aspect-ratio:439/95;background:currentColor;-webkit-mask:url(img/logo.png) center/contain no-repeat;mask:url(img/logo.png) center/contain no-repeat}
 header:hover,header.scrolled{box-shadow:0 6px 24px -12px rgba(0,59,44,.28)}
 header{transition:border-color .2s,box-shadow .25s}
 nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;align-items:center}
@@ -64,8 +79,8 @@ nav .cta:hover,nav .cta[aria-current=true]{background:var(--teal-deep);color:#ff
 /* hero */
 .hero{padding:clamp(40px,5vw,72px) 0 0}
 .hero .top{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px 64px;align-items:end}
-.hero h1{font-size:clamp(48px,7vw,96px);line-height:.98;letter-spacing:-.045em}
-.hero h1 + p{font-size:clamp(20px,2vw,24px);color:var(--teal);margin-top:14px;letter-spacing:-.01em}
+.hero h1{font-size:clamp(60px,8.6vw,124px);line-height:.92;letter-spacing:-.015em}
+.hero h1 + p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(24px,2.4vw,30px);color:var(--teal);margin-top:14px}
 .hero-foot{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
 .hero-foot p{max-width:40ch;color:var(--muted)}
 .shelf{margin-top:clamp(40px,6vw,64px);scroll-margin-top:90px}
@@ -94,7 +109,7 @@ nav .cta:hover,nav .cta[aria-current=true]{background:var(--teal-deep);color:#ff
 section{padding:clamp(72px,10vw,128px) 0}
 .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:clamp(36px,5vw,56px)}
 .head p{color:var(--muted);max-width:46ch}
-.lead{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,30px);line-height:1.3;color:var(--teal);margin-top:14px}
+.lead{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(26px,2.8vw,34px);line-height:1.3;color:var(--teal);margin-top:14px}
 
 /* product sheet */
 dialog{border:0;padding:0;margin:auto;width:min(1180px,100vw - 40px);height:min(840px,100dvh - 40px);max-width:none;max-height:none;border-radius:28px;background:var(--paper);color:var(--ink);overflow:hidden}
@@ -119,15 +134,15 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .close svg{width:18px;height:18px}
 .detail{padding:clamp(28px,4vw,48px) clamp(24px,3.5vw,44px) 28px;overflow:auto;display:flex;flex-direction:column;gap:20px}
 .detail .room{font-size:14px;color:var(--muted)}
-.detail h2{font-size:clamp(30px,3vw,40px);letter-spacing:-.035em;margin-top:4px}
-.quote{font-family:var(--serif);font-style:italic;font-size:clamp(20px,1.9vw,24px);line-height:1.35;color:var(--teal);max-width:30ch}
+.detail h2{font-size:clamp(36px,3.6vw,48px);margin-top:4px}
+.quote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(24px,2.2vw,28px);line-height:1.35;color:var(--teal);max-width:30ch}
 .detail .desc{max-width:52ch}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips button{font-size:14px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
 .chips button i{width:10px;height:10px;border-radius:50%;background:var(--c)}
 .chips button[aria-pressed=true]{background:var(--teal);color:#fff;border-color:var(--teal)}
 .feats{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.feats li{background:var(--beige);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--teal-deep)}
+.feats li{background:rgba(255,255,255,.65);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--teal-deep)}
 .facts{margin:0;border-top:1px solid var(--line)}
 .facts div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
 .facts dt{color:var(--muted)}
@@ -138,6 +153,15 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .pager button:last-child{text-align:right}
 .pager button:hover{color:var(--teal)}
 .pager b{display:block;font-weight:500;color:var(--teal-deep)}
+
+/* running USP ticker */
+.ticker{background:var(--teal);color:var(--beige);overflow:hidden;padding:20px 0;border-block:1px solid rgba(217,195,143,.35)}
+.ticker-track{display:flex;width:max-content}
+.ticker ul{display:flex;list-style:none;margin:0;padding:0;flex:none}
+.ticker li{display:flex;align-items:center;gap:28px;padding-right:28px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(22px,2.4vw,30px);white-space:nowrap}
+.ticker .spark{width:18px;height:18px;fill:var(--gold-soft);flex:none}
+@media (prefers-reduced-motion:no-preference){.ticker-track{animation:tick 48s linear infinite}.ticker:hover .ticker-track{animation-play-state:paused}@keyframes tick{to{transform:translateX(-50%)}}}
+@media (prefers-reduced-motion:reduce){.ticker-track ul+ul{display:none}.ticker ul{flex-wrap:wrap;justify-content:center;row-gap:8px;padding-inline:16px}.ticker-track{width:auto}}
 
 /* at home strip */
 #home{background:var(--grey);overflow:hidden}
@@ -165,7 +189,21 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .split .body > p{max-width:54ch}
 .split .body > p.muted{color:var(--muted)}
 
-#why{background:var(--paper)}
+#why{background:var(--teal);color:#D7E5DF}
+#why h2,#why h3{color:#fff}
+#why .lead{color:var(--gold-soft)}
+#why .split .body > p{color:#C9DCD4}
+#why .promise{border-top-color:rgba(255,255,255,.16)}
+#why .promise article+article{border-left-color:rgba(255,255,255,.16)}
+#why .promise p{color:#BFD3CB}
+#why .promise .glyph{color:var(--gold-soft)}
+.usps{list-style:none;margin:clamp(48px,6vw,72px) 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 16px;text-align:center}
+.usps li{display:flex;flex-direction:column;align-items:center;gap:6px}
+.medal{width:104px;height:104px;border-radius:50%;display:grid;place-items:center;margin-bottom:12px;color:var(--gold-soft);background:radial-gradient(circle at 35% 30%,#0B6A52,#003B2C 70%);box-shadow:0 0 0 1.5px var(--gold),0 0 0 7px rgba(217,195,143,.12),inset 0 0 0 6px rgba(0,0,0,.12);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.medal svg{width:44px;height:44px}
+.usps li:hover .medal{transform:translateY(-4px) rotate(-4deg);box-shadow:0 0 0 1.5px var(--gold-soft),0 0 0 9px rgba(217,195,143,.22),inset 0 0 0 6px rgba(0,0,0,.12)}
+.usps b{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.1;color:#fff}
+.usps small{font-size:14px;color:#BFD3CB}
 .promise{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line);margin-top:clamp(48px,6vw,72px)}
 .promise article{padding:32px 32px 0 0}
 .promise article+article{padding-left:32px;border-left:1px solid var(--line)}
@@ -174,12 +212,12 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .free{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0}
 .free li{list-style:none;background:var(--beige);border-radius:999px;padding:8px 16px;font-size:14px;color:var(--teal-deep)}
 
-#story{background:var(--beige)}
+#story{background:var(--paper)}
 .steps{list-style:none;margin:0;padding:0;counter-reset:s}
 .steps li{counter-increment:s;display:grid;grid-template-columns:52px minmax(0,1fr);gap:2px 14px;padding:20px 0;border-top:1px solid var(--line)}
 .steps li:last-child{border-bottom:1px solid var(--line)}
 .steps li::before{content:counter(s);grid-row:span 2;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--teal);color:var(--teal);display:grid;place-items:center;font-size:14px;font-weight:500}
-.steps h3{font-size:18px}
+.steps h3{font-size:23px}
 .steps p{color:var(--muted);font-size:16px}
 .also{font-size:15px;color:var(--muted);border-left:2px solid var(--teal);padding-left:16px}
 
@@ -187,24 +225,17 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .banner{margin:0}
 .banner img{width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;object-position:50% 62%;border-radius:28px}
 .mv{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);margin-top:clamp(36px,5vw,56px)}
-.mv h3{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500;color:var(--teal);letter-spacing:0;margin-bottom:16px}
-.mv h3::before{content:"";width:28px;height:2px;border-radius:2px;background:#B8954A}
-.mv .vision p{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(28px,3.2vw,40px);line-height:1.2;color:var(--teal-deep);max-width:16ch}
-.mv .mission p{font-family:var(--serif);font-size:clamp(20px,1.9vw,24px);line-height:1.45;color:var(--teal-deep);max-width:40ch;font-variation-settings:"opsz" 24}
+.mv h3{display:flex;align-items:center;gap:12px;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--teal);letter-spacing:0;margin-bottom:16px}
+.mv h3::before{content:"";width:28px;height:2px;border-radius:2px;background:var(--gold)}
+.mv .vision p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(34px,3.8vw,48px);line-height:1.2;color:var(--teal-deep);max-width:16ch}
+.mv .mission p{font-family:var(--serif);font-weight:500;font-size:clamp(23px,2.1vw,27px);line-height:1.4;color:var(--teal-deep);max-width:40ch}
 .mv .mission p + p{margin-top:16px;font-style:italic;color:var(--teal)}
 
 #team{background:var(--paper)}
-.team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.team.core{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:20px}
-.person{display:flex;gap:20px;align-items:center;background:var(--beige);border-radius:22px;padding:22px}
-.team.core .person{flex-direction:column;align-items:flex-start;gap:14px;background:var(--grey)}
-.ph{flex:none;width:96px;aspect-ratio:1;border-radius:50%;background:var(--beige-deep);display:grid;place-items:center;color:rgba(1,84,63,.45)}
-.team.core .ph{width:72px;background:#fff}
-.ph svg{width:46%;height:46%}
-.person b{display:block;font-weight:500;font-size:18px;color:var(--teal-deep)}
-.person span{color:var(--muted);font-size:15px}
-.person small{display:block;color:var(--muted);font-size:13px;margin-top:4px}
-.team-label{font-size:15px;color:var(--muted);margin:36px 0 0}
+.team-ph{aspect-ratio:21/9;border-radius:28px;background:var(--grey);border:1.5px dashed rgba(1,84,63,.3);display:grid;place-content:center;justify-items:center;gap:6px;text-align:center;padding:24px;color:rgba(1,84,63,.35)}
+.team-ph svg{width:clamp(80px,10vw,128px);margin-bottom:10px}
+.team-ph b{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,36px);color:var(--teal-deep)}
+.team-ph span{color:var(--muted)}
 
 /* contact */
 #contact{background:var(--teal);color:#E3EEEA}
@@ -228,7 +259,7 @@ form .btn{background:#fff;color:var(--teal);justify-self:start}
 form .btn:hover{background:var(--beige)}
 .form-note{grid-column:1/-1;font-size:14px;color:#C5DAD2;min-height:1.4em}
 
-footer{background:var(--beige);color:var(--muted);font-size:14px;padding:40px 0}
+footer{background:var(--grey);color:var(--muted);font-size:14px;padding:40px 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:14px 32px;justify-content:space-between;align-items:center}
 footer .brand{display:flex;flex-direction:column;gap:6px}
 footer .logo{width:116px}
@@ -237,10 +268,11 @@ footer .tag{color:var(--teal);font-size:14px}
 @media (max-width:960px){
   .hero .top,.contact,.head,.split{grid-template-columns:1fr}
   .split.flip > figure{order:0}
+  .team-ph{aspect-ratio:4/3}
+  .usps{grid-template-columns:repeat(3,minmax(0,1fr))}
   .split figure img{height:auto;min-height:0;aspect-ratio:3/2}
   .mv{grid-template-columns:1fr}
   .banner img{aspect-ratio:3/2}
-  .team.core{grid-template-columns:repeat(2,minmax(0,1fr))}
   dialog{width:100vw;height:100dvh;border-radius:0}
   dialog[open]{grid-template-columns:1fr;grid-template-rows:58dvh auto;overflow:auto}
   .gallery{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;height:58dvh}
@@ -251,7 +283,7 @@ footer .tag{color:var(--teal);font-size:14px}
   .detail{overflow:visible}
 }
 @media (max-width:760px){
-  nav ul{display:none;position:absolute;top:70px;left:0;right:0;background:var(--paper);flex-direction:column;gap:0;padding:8px 16px 16px;border-bottom:1px solid var(--line)}
+  nav ul{display:none;position:absolute;top:88px;left:0;right:0;background:var(--paper);flex-direction:column;gap:0;padding:8px 16px 16px;border-bottom:1px solid var(--line)}
   nav ul.open{display:flex}
   nav li a{display:block;padding:12px 14px;font-size:17px}
   nav .cta{margin:8px 0 0;text-align:center}
@@ -264,21 +296,21 @@ footer .tag{color:var(--teal);font-size:14px}
   .tier{padding-right:24px}
   .tier{padding-bottom:52px}
   .promise{grid-template-columns:1fr}
+  .usps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .medal{width:88px;height:88px}
   .promise article,.promise article+article{padding:26px 0;border-left:0;border-bottom:1px solid var(--line)}
   .promise .glyph{margin-bottom:14px}
   form{grid-template-columns:1fr}
   .facts div{grid-template-columns:1fr;gap:2px}
-  .team{grid-template-columns:1fr}
-  .person{padding:18px}
-  .ph{width:76px}
 }
 </style>
 </head>
-<body id="top">
+<body id="top" class="intro-on">
+<div class="intro" id="intro" aria-hidden="true"><div class="stack"><span class="logo"></span><span class="tagline">Make It Shine</span></div></div>
 
 <header>
   <div class="wrap bar">
-    <a class="mark" href="#top" aria-label="Shinox home"><span class="logo"></span></a>
+    <a class="mark brandmark" href="#top" aria-label="Shinox home"><span class="logo"></span><span class="tagline">Make It Shine</span></a>
     <nav aria-label="Main">
       <button class="menu" aria-expanded="false" aria-controls="navlist">Menu</button>
       <ul id="navlist">
@@ -313,6 +345,10 @@ footer .tag{color:var(--teal);font-size:14px}
   </div>
 </div>
 
+<div class="ticker" role="region" aria-label="What every Shinox product promises">
+  <div class="ticker-track"><ul><li>No artificial colouring<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Gentle on hands<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Lab tested<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>ISO certified company<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Made in India<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Herbal water infused<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Enriched with coconut oil<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Streak-free shine<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Refill pouches and 5 litre packs<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li></ul><ul aria-hidden="true"><li>No artificial colouring<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Gentle on hands<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Lab tested<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>ISO certified company<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Made in India<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Herbal water infused<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Enriched with coconut oil<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Streak-free shine<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li><li>Refill pouches and 5 litre packs<svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></svg></li></ul></div>
+</div>
+
 <section id="home">
   <div class="wrap">
     <div class="head">
@@ -339,14 +375,10 @@ footer .tag{color:var(--teal);font-size:14px}
           <p class="lead">It works, and it’s kind.</p>
         </div>
         <p>Exceptional hygiene is not a luxury. It is an everyday essential. Strong cleaners usually leave something harsh behind, so we hold every formula to three rules instead.</p>
-        <ul class="free">
-          <li>No artificial colouring</li>
-          <li>Lab tested</li>
-          <li>ISO certified company</li>
-          <li>Made in India</li>
-        </ul>
+        
       </div>
     </div>
+<ul class="usps"><li><span class="medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11Z"/><path d="M4 4l16 16"/></svg></span><b>No artificial colouring</b><small>On every product</small></li><li><span class="medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14Z"/><path d="M5 19l8-8"/></svg></span><b>Gentle on hands</b><small>Tough on dirt, kind to skin</small></li><li><span class="medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></svg></span><b>Lab tested</b><small>Formulas you can trust</small></li><li><span class="medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg></span><b>ISO certified</b><small>Quality-certified company</small></li><li><span class="medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></span><b>Made in India</b><small>Proudly from Bengaluru</small></li><li><span class="medal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-4M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.9 4M20 20v-4h-4"/></svg></span><b>Refill and 5 L packs</b><small>Less plastic, better value</small></li></ul>
     <div class="promise">
       <article>
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="22" cy="22" r="20"/><path d="M22 8v6M22 30v6M8 22h6M30 22h6M12 12l4 4M28 28l4 4M32 12l-4 4M16 28l-4 4"/></svg>
@@ -411,18 +443,12 @@ footer .tag{color:var(--teal);font-size:14px}
   <div class="wrap">
     <div class="head">
       <h2>Our Team</h2>
-      <p>The people behind every bottle of Shinox.</p>
+      <p>The founders and the core team behind every bottle of Shinox.</p>
     </div>
-    <div class="team">
-      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Founder name</b><span>Founder</span><small>Photo and bio coming soon</small></div></div>
-      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Co-founder name</b><span>Co-founder</span><small>Photo and bio coming soon</small></div></div>
-    </div>
-    <p class="team-label">Core team</p>
-    <div class="team core">
-      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Name</b><span>Role</span></div></div>
-      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Name</b><span>Role</span></div></div>
-      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Name</b><span>Role</span></div></div>
-      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Name</b><span>Role</span></div></div>
+    <div class="team-ph" role="img" aria-label="Team photo coming soon">
+      <svg viewBox="0 0 64 40" fill="currentColor" aria-hidden="true"><circle cx="20" cy="12" r="7"/><circle cx="44" cy="12" r="7"/><circle cx="32" cy="9" r="8"/><path d="M4 40c0-9 7-15 16-15 4 0 7 1 9.5 3C27 30 25 34 25 40Z"/><path d="M60 40c0-9-7-15-16-15-4 0-7 1-9.5 3 2.5 2 4.5 6 4.5 12Z"/><path d="M16 40c0-10 7-17 16-17s16 7 16 17Z"/></svg>
+      <b>Team photo coming soon</b>
+      <span>Founder, co-founder and core team</span>
     </div>
   </div>
 </section>
@@ -661,6 +687,22 @@ sheet.addEventListener('keydown',e=>{
 });
 const m=location.hash.match(/^#p\/([\w-]+)/);
 if(m){P.forEach((p,i)=>p.v.forEach((v,j)=>{if(v.k===m[1])openSheet(i,j)}))}
+
+/* opening intro: big logo glides into the header */
+(function(){
+  const intro=$('intro');
+  const done=()=>{document.body.classList.remove('intro-on');intro.remove()};
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||location.hash.startsWith('#p/')||scrollY>40){done();return}
+  setTimeout(()=>{
+    const big=intro.querySelector('.logo'),target=document.querySelector('header .brandmark .logo');
+    const a=big.getBoundingClientRect(),b=target.getBoundingClientRect();
+    const k=b.width/a.width;
+    big.animate([{transform:'none'},{transform:`translate(${b.left-a.left}px,${b.top-a.top}px) scale(${k})`}],{duration:950,easing:'cubic-bezier(.7,0,.2,1)',fill:'forwards'});
+    intro.querySelector('.tagline').animate([{opacity:1},{opacity:0}],{duration:350,fill:'forwards'});
+    intro.animate([{backgroundColor:'rgba(242,234,220,1)'},{backgroundColor:'rgba(242,234,220,0)'}],{duration:700,delay:300,fill:'forwards'});
+    setTimeout(done,980);
+  },1300);
+})();
 
 /* page chrome */
 const navLinks=[...document.querySelectorAll('nav a[href^="#"]')];
