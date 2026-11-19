@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shinox Home Care</title>
-<meta name="description" content="Biodegradable home cleaners from Bengaluru, for every room: floors, dishes, glass, bathroom, hands, laundry, metal and silver.">
+<meta name="description" content="Shinox: Make It Shine. Home-care and hygiene products from Bengaluru for floors, dishes, glass, bathrooms, hands, laundry, metal and silver.">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="theme-color" content="#01543F">
 <meta property="og:title" content="Shinox Home Care">
-<meta property="og:description" content="Biodegradable home cleaners for every room, made in Bengaluru.">
+<meta property="og:description" content="Make It Shine. Home-care and hygiene products for every room, made in Bengaluru.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
@@ -17,11 +17,14 @@
 :root{
   --teal:#01543F;
   --teal-deep:#003B2C;
-  --mist:#EEF3F1;
-  --paper:#FFFFFF;
-  --ink:#10231D;
-  --muted:#55665F;
+  --beige:#F4EDE2;
+  --beige-deep:#E9DECB;
+  --grey:#EDEEEB;
+  --paper:#FBF8F3;
+  --ink:#1A2420;
+  --muted:#5E655F;
   --line:rgba(1,84,63,.16);
+  --logo:#000000;
   --sans:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   --serif:"Newsreader",Georgia,serif;
   --wrap:min(1200px,100% - 32px);
@@ -36,21 +39,19 @@ button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
 .wrap{width:var(--wrap);margin-inline:auto}
 h1,h2,h3{font-weight:500;letter-spacing:-.025em;margin:0;color:var(--teal-deep)}
-h2{font-size:clamp(32px,4.4vw,52px);line-height:1.05}
+h2{font-size:clamp(34px,4.6vw,56px);line-height:1.04}
 h3{font-size:20px;letter-spacing:-.01em}
 p{margin:0}
 .btn{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;text-decoration:none;font-weight:500;font-size:16px;padding:14px 24px;border-radius:999px;border:0;cursor:pointer;transition:background .15s}
 .btn:hover{background:var(--teal-deep)}
-.btn.ghost{background:none;color:var(--teal);box-shadow:inset 0 0 0 1px var(--line)}
-.btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--teal);background:none}
 
 /* header */
-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+header{position:sticky;top:0;z-index:20;background:rgba(251,248,243,.92);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
 header.scrolled{border-color:var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
-.mark{color:var(--teal);text-decoration:none;display:block}
-.logo{display:block;width:136px;aspect-ratio:439/95;background:currentColor;-webkit-mask:url(img/logo.png) center/contain no-repeat;mask:url(img/logo.png) center/contain no-repeat}
-nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.bar{display:flex;align-items:center;justify-content:space-between;height:70px}
+.mark{color:var(--logo);text-decoration:none;display:block}
+.logo{display:block;width:140px;aspect-ratio:439/95;background:currentColor;-webkit-mask:url(img/logo.png) center/contain no-repeat;mask:url(img/logo.png) center/contain no-repeat}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
 nav a{text-decoration:none;font-size:15px;color:var(--muted)}
 nav a:hover{color:var(--teal)}
 nav .cta{color:var(--teal);font-weight:500}
@@ -58,28 +59,35 @@ nav .cta{color:var(--teal);font-weight:500}
 
 /* hero */
 .hero{padding:clamp(40px,5vw,72px) 0 0}
-.hero .top{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px 64px;align-items:end}
-.hero h1{font-size:clamp(42px,6vw,84px);line-height:1;letter-spacing:-.045em;max-width:14ch}
+.hero .top{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px 64px;align-items:end}
+.hero h1{font-size:clamp(48px,7vw,96px);line-height:.98;letter-spacing:-.045em}
+.hero h1 + p{font-size:clamp(20px,2vw,24px);color:var(--teal);margin-top:14px;letter-spacing:-.01em}
 .hero-foot{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
-.hero-foot p{max-width:40ch;color:var(--muted);font-size:17px}
-.shelf{margin-top:clamp(40px,6vw,72px)}
-.shelf-row{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(4px,1.6vw,28px);height:clamp(190px,min(28vw,40vh),380px);padding:0 clamp(0px,2vw,24px)}
-.shelf-row button{all:unset;cursor:pointer;flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative}
-.shelf-row img{height:calc(var(--h) * 100%);width:100%;object-fit:contain;object-position:50% 100%;transform-origin:50% 100%;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.hero-foot p{max-width:40ch;color:var(--muted)}
+.shelf{margin-top:clamp(40px,6vw,64px)}
+.shelf-scroll{overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px;--sw:inherit}
+.shelf-scroll > *{min-width:var(--sw,0px)}
+.shelf-scroll::-webkit-scrollbar{display:none}
+.shelf-row{display:flex;align-items:flex-end;justify-content:space-between;height:var(--sh,260px);width:max(100%,var(--sw,0px))}
+.shelf-group{display:flex;align-items:flex-end;gap:var(--bg,4px);height:100%;flex:none}
+.shelf-row button{all:unset;cursor:pointer;flex:none;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative}
+.shelf-row img{height:calc(var(--h) * var(--sh,260px));width:auto;max-width:none;transform-origin:50% 100%;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .shelf-row button:hover img,.shelf-row button:focus-visible img{transform:translateY(-10px)}
 .shelf-row button:focus-visible{outline:none}
-.shelf-row .tag{position:absolute;bottom:-38px;white-space:nowrap;font-size:13px;color:var(--teal);opacity:0;transition:opacity .2s}
+.shelf-row .tag{position:absolute;bottom:-36px;white-space:nowrap;font-size:13px;color:var(--teal);opacity:0;transition:opacity .2s;pointer-events:none}
 .shelf-row button:hover .tag,.shelf-row button:focus-visible .tag{opacity:1}
-.ledge{height:14px;background:var(--teal);border-radius:2px}
-.shelf-note{display:flex;justify-content:space-between;gap:16px;padding:52px 0 20px;color:var(--muted);font-size:14px;border-bottom:1px solid var(--line)}
+.shelf-gap{flex:0 0 12px}
+.ledge{height:14px;background:var(--teal);border-radius:2px;width:max(100%,var(--sw,0px))}
+.shelf-note{display:flex;justify-content:space-between;gap:16px;padding:50px 0 20px;color:var(--muted);font-size:14px;border-bottom:1px solid var(--line)}
 @media (prefers-reduced-motion:no-preference){
-  .shelf-row button{animation:land .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 70ms + 150ms)}
+  .shelf-row button{animation:land .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 45ms + 150ms)}
   @keyframes land{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 }
 
 section{padding:clamp(72px,10vw,128px) 0}
 .head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:clamp(36px,5vw,56px)}
 .head p{color:var(--muted);max-width:46ch}
+.lead{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,30px);line-height:1.3;color:var(--teal);margin-top:14px}
 
 /* range grid */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
@@ -91,6 +99,7 @@ section{padding:clamp(72px,10vw,128px) 0}
 .tile .open{all:unset;cursor:pointer;display:block;position:absolute;inset:0;z-index:1;border-radius:24px}
 .tile .open:focus-visible{outline:2px solid var(--teal);outline-offset:-4px}
 .tile .meta{display:flex;justify-content:space-between;padding:20px 22px 0;font-size:13px;color:var(--muted);position:relative}
+.tile .meta b{font-weight:500;color:var(--teal-deep);font-size:14px}
 .tile .pic{position:relative;aspect-ratio:1/1.08}
 .tile .pic::after{content:"";position:absolute;left:30%;right:30%;bottom:7%;height:14px;border-radius:50%;background:rgba(0,40,30,.16);filter:blur(7px)}
 .tile .pic img{position:absolute;left:0;right:0;top:5%;bottom:8.5%;height:86.5%;width:100%;object-fit:contain;object-position:50% 100%;z-index:1;transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .25s;transform-origin:50% 100%}
@@ -104,36 +113,37 @@ section{padding:clamp(72px,10vw,128px) 0}
 .dots button[aria-pressed=true]{box-shadow:inset 0 0 0 1.5px var(--teal-deep)}
 
 /* product sheet */
-dialog{border:0;padding:0;margin:auto;width:min(1180px,100vw - 40px);height:min(820px,100dvh - 40px);max-width:none;max-height:none;border-radius:28px;background:var(--paper);color:var(--ink);overflow:hidden}
+dialog{border:0;padding:0;margin:auto;width:min(1180px,100vw - 40px);height:min(840px,100dvh - 40px);max-width:none;max-height:none;border-radius:28px;background:var(--paper);color:var(--ink);overflow:hidden}
 dialog::backdrop{background:rgba(0,30,22,.55);backdrop-filter:blur(4px)}
 dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 @media (prefers-reduced-motion:no-preference){dialog[open]{animation:pop .3s cubic-bezier(.2,.8,.2,1)}@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}}
-.gallery{position:relative;background:var(--tint);transition:background-color .4s;display:grid;grid-template-columns:76px minmax(0,1fr);gap:0;min-height:0}
-.thumbs{display:flex;flex-direction:column;gap:10px;padding:24px 0 24px 20px;overflow:auto}
-.thumbs button{width:56px;height:76px;border-radius:12px;border:0;background:rgba(255,255,255,.55);cursor:pointer;padding:6px;flex:none}
+.gallery{position:relative;background:var(--tint);transition:background-color .4s;display:grid;grid-template-columns:76px minmax(0,1fr);min-height:0}
+.thumbs{display:flex;flex-direction:column;gap:10px;padding:24px 0 24px 20px;overflow:auto;position:relative;z-index:2}
+.thumbs button{width:56px;height:76px;border-radius:12px;border:0;background:rgba(255,255,255,.6);cursor:pointer;padding:6px;flex:none}
 .thumbs button img{width:100%;height:100%;object-fit:contain}
 .thumbs button[aria-current=true]{background:#fff;box-shadow:inset 0 0 0 1.5px var(--teal)}
-.view{position:relative;overflow:hidden;cursor:zoom-in;min-height:0;display:flex;align-items:center;justify-content:center;padding:40px 24px 56px}
-.view.zoomed{cursor:zoom-out}
-.view img{position:absolute;inset:40px 24px 56px;width:calc(100% - 48px);height:calc(100% - 96px);object-fit:contain;transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .2s;will-change:transform}
-.view.zoomed img{transform:scale(2.4);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.view.life{padding:0}
-.view.life img{inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 55%}
-.view.life .hint{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
 .thumbs button.life{padding:0;overflow:hidden}
 .thumbs button.life img{object-fit:cover}
+.view{position:relative;overflow:hidden;cursor:zoom-in;min-height:0}
+.view.zoomed{cursor:zoom-out}
+.view img{position:absolute;inset:40px 24px 56px;width:calc(100% - 48px);height:calc(100% - 96px);object-fit:contain;transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .2s;will-change:transform}
+.view.zoomed img{transform:scale(2.4)}
+.view.life img{inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 55%}
 .view .hint{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:13px;color:var(--muted);pointer-events:none}
+.view.life .hint{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
 .close{position:absolute;top:16px;right:16px;z-index:5;width:44px;height:44px;border-radius:50%;border:0;background:#fff;cursor:pointer;display:grid;place-items:center;box-shadow:0 0 0 1px var(--line)}
 .close svg{width:18px;height:18px}
-.detail{padding:clamp(28px,4vw,52px) clamp(24px,3.5vw,48px) 28px;overflow:auto;display:flex;flex-direction:column;gap:22px}
+.detail{padding:clamp(28px,4vw,48px) clamp(24px,3.5vw,44px) 28px;overflow:auto;display:flex;flex-direction:column;gap:20px}
 .detail .room{font-size:14px;color:var(--muted)}
 .detail h2{font-size:clamp(30px,3vw,40px);letter-spacing:-.035em;margin-top:4px}
-.quote{font-family:var(--serif);font-style:italic;font-size:clamp(21px,2vw,25px);line-height:1.35;color:var(--teal);max-width:28ch}
-.detail .desc{max-width:50ch}
+.quote{font-family:var(--serif);font-style:italic;font-size:clamp(20px,1.9vw,24px);line-height:1.35;color:var(--teal);max-width:30ch}
+.detail .desc{max-width:52ch}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips button{font-size:14px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
 .chips button i{width:10px;height:10px;border-radius:50%;background:var(--c)}
 .chips button[aria-pressed=true]{background:var(--teal);color:#fff;border-color:var(--teal)}
+.feats{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.feats li{background:var(--beige);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--teal-deep)}
 .facts{margin:0;border-top:1px solid var(--line)}
 .facts div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
 .facts dt{color:var(--muted)}
@@ -146,9 +156,9 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .pager b{display:block;font-weight:500;color:var(--teal-deep)}
 
 /* at home strip */
-#home{background:var(--mist);overflow:hidden}
+#home{background:var(--grey);overflow:hidden}
 #home .head{margin-bottom:32px}
-.strip-nav{display:flex;gap:8px;justify-content:flex-end}
+.strip-nav{display:flex;gap:8px;margin-top:20px}
 .strip-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;color:var(--teal)}
 .strip-nav button:hover{border-color:var(--teal)}
 .strip-nav svg{width:18px;height:18px}
@@ -162,35 +172,63 @@ dialog[open]{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .strip .cap b{font-weight:500;color:var(--teal-deep)}
 .strip .cap span{color:var(--muted)}
 
-/* promise */
-.promise{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+/* image + text sections */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:center}
+.split.flip > figure{order:2}
+.split figure{margin:0}
+.split figure img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:28px}
+.split .body{display:flex;flex-direction:column;gap:22px}
+.split .body > p{max-width:54ch}
+.split .body > p.muted{color:var(--muted)}
+
+#why{background:var(--paper)}
+.promise{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line);margin-top:clamp(48px,6vw,72px)}
 .promise article{padding:32px 32px 0 0}
 .promise article+article{padding-left:32px;border-left:1px solid var(--line)}
 .promise p{color:var(--muted);margin-top:10px;max-width:34ch}
-.promise .glyph{width:44px;height:44px;margin-bottom:28px;color:var(--teal)}
-.free{display:flex;flex-wrap:wrap;gap:10px;margin-top:56px;padding:0}
-.free li{list-style:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;color:var(--teal-deep)}
+.promise .glyph{width:44px;height:44px;margin-bottom:24px;color:var(--teal)}
+.free{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0}
+.free li{list-style:none;background:var(--beige);border-radius:999px;padding:8px 16px;font-size:14px;color:var(--teal-deep)}
 
-/* story */
-#story{background:var(--mist)}
-.story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px)}
-.story .lede{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.6vw,32px);line-height:1.3;color:var(--teal);margin-top:28px;max-width:22ch}
+#story{background:var(--beige)}
 .steps{list-style:none;margin:0;padding:0;counter-reset:s}
-.steps li{counter-increment:s;display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 16px;padding:28px 0;border-top:1px solid var(--line)}
+.steps li{counter-increment:s;display:grid;grid-template-columns:52px minmax(0,1fr);gap:2px 14px;padding:20px 0;border-top:1px solid var(--line)}
 .steps li:last-child{border-bottom:1px solid var(--line)}
-.steps li::before{content:counter(s);grid-row:span 2;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--teal);color:var(--teal);display:grid;place-items:center;font-size:15px;font-weight:500}
-.steps p{color:var(--muted);max-width:54ch}
-.mission{margin-top:clamp(64px,8vw,104px);padding-top:40px;border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px)}
-.mission p{font-size:clamp(22px,2.4vw,30px);line-height:1.3;letter-spacing:-.02em;color:var(--teal-deep);max-width:30ch}
-.mission small{display:block;font-size:14px;color:var(--muted);margin-bottom:10px;letter-spacing:0}
+.steps li::before{content:counter(s);grid-row:span 2;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--teal);color:var(--teal);display:grid;place-items:center;font-size:14px;font-weight:500}
+.steps h3{font-size:18px}
+.steps p{color:var(--muted);font-size:16px}
+.also{font-size:15px;color:var(--muted);border-left:2px solid var(--teal);padding-left:16px}
+
+#mission{background:var(--grey)}
+.mv{display:grid;gap:18px}
+.mv article{background:var(--paper);border-radius:22px;padding:28px 30px}
+.mv h3{font-size:15px;font-weight:500;color:var(--teal);letter-spacing:0}
+.mv p{font-size:clamp(20px,2vw,26px);line-height:1.32;letter-spacing:-.015em;color:var(--teal-deep);margin-top:10px}
+
+#team{background:var(--paper)}
+.team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.team.core{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:20px}
+.person{display:flex;gap:20px;align-items:center;background:var(--beige);border-radius:22px;padding:22px}
+.team.core .person{flex-direction:column;align-items:flex-start;gap:14px;background:var(--grey)}
+.ph{flex:none;width:96px;aspect-ratio:1;border-radius:50%;background:var(--beige-deep);display:grid;place-items:center;color:rgba(1,84,63,.45)}
+.team.core .ph{width:72px;background:#fff}
+.ph svg{width:46%;height:46%}
+.person b{display:block;font-weight:500;font-size:18px;color:var(--teal-deep)}
+.person span{color:var(--muted);font-size:15px}
+.person small{display:block;color:var(--muted);font-size:13px;margin-top:4px}
+.team-label{font-size:15px;color:var(--muted);margin:36px 0 0}
 
 /* contact */
 #contact{background:var(--teal);color:#E3EEEA}
 #contact h2{color:#fff}
 .contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px)}
 .contact .side p{margin-top:20px;max-width:38ch;color:#C5DAD2}
-.contact address{font-style:normal;margin-top:40px;font-size:15px;line-height:1.7;color:#C5DAD2}
-.contact address a{color:#fff}
+.reach{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:14px;font-size:16px}
+.reach li{display:flex;gap:14px;align-items:flex-start}
+.reach svg{flex:none;width:20px;height:20px;margin-top:3px;color:#D9C38F}
+.reach a{color:#fff;text-decoration:none}
+.reach a:hover{text-decoration:underline}
+.reach small{display:block;color:#A9C6BB;font-size:14px}
 form{display:grid;grid-template-columns:1fr 1fr;gap:28px 24px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field.full{grid-column:1/-1}
@@ -199,43 +237,49 @@ input,textarea{font:inherit;color:#fff;background:transparent;border:0;border-bo
 textarea{resize:vertical;min-height:96px}
 input:focus,textarea:focus{outline:none;border-bottom-color:#fff}
 form .btn{background:#fff;color:var(--teal);justify-self:start}
-form .btn:hover{background:#E3EEEA}
+form .btn:hover{background:var(--beige)}
 .form-note{grid-column:1/-1;font-size:14px;color:#C5DAD2;min-height:1.4em}
-footer{background:var(--teal-deep);color:#9FBDB2;font-size:14px;padding:36px 0}
-footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;align-items:center}
-footer .mark{color:#fff}
-footer .logo{width:112px}
+
+footer{background:var(--beige);color:var(--muted);font-size:14px;padding:40px 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px 32px;justify-content:space-between;align-items:center}
+footer .brand{display:flex;flex-direction:column;gap:6px}
+footer .logo{width:116px}
+footer .tag{color:var(--teal);font-size:14px}
 
 @media (max-width:960px){
-  .hero .top,.story,.mission,.contact,.head{grid-template-columns:1fr}
+  .hero .top,.contact,.head,.split{grid-template-columns:1fr}
+  .split.flip > figure{order:0}
   .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .team.core{grid-template-columns:repeat(2,minmax(0,1fr))}
   dialog{width:100vw;height:100dvh;border-radius:0}
   dialog[open]{grid-template-columns:1fr;grid-template-rows:58dvh auto;overflow:auto}
   .gallery{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;height:58dvh}
   .thumbs{flex-direction:row;padding:0 16px 16px;justify-content:center;order:2}
   .thumbs button{width:48px;height:64px}
-  .view{padding:56px 16px 36px}
+  .view img{inset:56px 16px 36px;width:calc(100% - 32px);height:calc(100% - 92px)}
   .view .hint{bottom:8px}
   .detail{overflow:visible}
 }
 @media (max-width:760px){
-  nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:8px 16px 16px;border-bottom:1px solid var(--line)}
+  nav ul{display:none;position:absolute;top:70px;left:0;right:0;background:var(--paper);flex-direction:column;gap:0;padding:8px 16px 16px;border-bottom:1px solid var(--line)}
   nav ul.open{display:flex}
   nav li a{display:block;padding:12px 0;font-size:17px}
   .menu{display:block}
-  .shelf-row{height:190px;gap:2px}
   .shelf-row .tag{display:none}
   .shelf-note span:last-child{display:none}
   .promise{grid-template-columns:1fr}
-  .promise article,.promise article+article{padding:28px 0;border-left:0;border-bottom:1px solid var(--line)}
-  .promise .glyph{margin-bottom:16px}
+  .promise article,.promise article+article{padding:26px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .promise .glyph{margin-bottom:14px}
   form{grid-template-columns:1fr}
   .tile .meta{padding:14px 14px 0;font-size:12px}
-  .tile .meta span:last-child{display:none}
+  .tile .meta span{display:none}
   .tile .foot{flex-direction:column;align-items:flex-start;padding:0 14px 16px;gap:8px}
   .tile h3{font-size:16px}
   .tile .sub{display:none}
   .facts div{grid-template-columns:1fr;gap:2px}
+  .team{grid-template-columns:1fr}
+  .person{padding:18px}
+  .ph{width:76px}
 }
 </style>
 </head>
@@ -249,7 +293,9 @@ footer .logo{width:112px}
       <ul id="navlist">
         <li><a href="#range">Products</a></li>
         <li><a href="#why">Why Shinox</a></li>
-        <li><a href="#story">Our story</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#mission">Mission &amp; Vision</a></li>
+        <li><a href="#team">Team</a></li>
         <li><a class="cta" href="#contact">Contact us</a></li>
       </ul>
     </nav>
@@ -260,16 +306,21 @@ footer .logo{width:112px}
 <div class="hero">
   <div class="wrap">
     <div class="top">
-      <h1>Hard on the mess. Kind to everything under it.</h1>
+      <div>
+        <h1>Make it shine.</h1>
+        <p>Hard on the mess. Kind to everything under it.</p>
+      </div>
       <div class="hero-foot">
-        <p>Biodegradable cleaners for every room of an Indian home, from greasy kadais to the family silver. Made in Bengaluru.</p>
-        <a class="btn" href="#range">See all nine products</a>
+        <p>Nine home-care solutions in 17 variants, for every corner of an Indian home, from the kadai to the family silver. Made in Bengaluru.</p>
+        <a class="btn" href="#range">See the range</a>
       </div>
     </div>
-    <div class="shelf" aria-label="The Shinox range">
-      <div class="shelf-row" id="shelf"></div>
-      <div class="ledge"></div>
-      <div class="shelf-note"><span>Biodegradable. No artificial colouring.</span><span>Choose a bottle to see it up close</span></div>
+    <div class="shelf" aria-label="Every Shinox product and variant">
+      <div class="shelf-scroll">
+        <div class="shelf-row" id="shelf"></div>
+        <div class="ledge"></div>
+      </div>
+      <div class="shelf-note"><span>All 17 variants. No artificial colouring.</span><span>Choose a bottle to see it up close</span></div>
     </div>
   </div>
 </div>
@@ -291,7 +342,7 @@ footer .logo{width:112px}
       <h2>Made for real Indian homes.</h2>
       <div>
         <p>From the kadai at the sink to the diya on the pooja shelf. Choose a photo to see the product.</p>
-        <div class="strip-nav" style="margin-top:20px">
+        <div class="strip-nav">
           <button id="s-prev" aria-label="Previous photos"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 3 5 9l6 6"/></svg></button>
           <button id="s-next" aria-label="Next photos"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m7 3 6 6-6 6"/></svg></button>
         </div>
@@ -303,9 +354,21 @@ footer .logo{width:112px}
 
 <section id="why">
   <div class="wrap">
-    <div class="head">
-      <h2>It works, and it’s kind.</h2>
-      <p>Strong cleaners usually leave something harsh behind. We hold every formula to three rules instead.</p>
+    <div class="split">
+      <figure><img src="img/sections/why.webp" alt="Hands wiping a gleaming kitchen counter in a sunlit Bengaluru kitchen" loading="lazy" width="1536" height="1024"></figure>
+      <div class="body">
+        <div>
+          <h2>Why Shinox</h2>
+          <p class="lead">It works, and it’s kind.</p>
+        </div>
+        <p>Exceptional hygiene is not a luxury. It is an everyday essential. Strong cleaners usually leave something harsh behind, so we hold every formula to three rules instead.</p>
+        <ul class="free">
+          <li>No artificial colouring</li>
+          <li>Lab tested</li>
+          <li>ISO certified company</li>
+          <li>Made in India</li>
+        </ul>
+      </div>
     </div>
     <div class="promise">
       <article>
@@ -321,35 +384,63 @@ footer .logo{width:112px}
       <article>
         <svg class="glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 40V20"/><path d="M22 22c0-9 6-15 16-16 0 10-6 16-16 16Z"/><path d="M22 28c0-6-4-10-14-11 0 7 4 11 14 11Z"/></svg>
         <h3>Tread lightly</h3>
-        <p>Biodegradable formulas with no artificial colouring, and 5 litre packs that cut down on plastic.</p>
+        <p>More sustainable choices, bamboo-based essentials and 5 litre packs and refill pouches that cut down on plastic.</p>
       </article>
     </div>
-    <ul class="free">
-      <li>Biodegradable</li>
-      <li>No artificial colouring</li>
-      <li>Lab tested</li>
-      <li>ISO certified company</li>
-      <li>Made in India</li>
-    </ul>
   </div>
 </section>
 
 <section id="story">
-  <div class="wrap">
-    <div class="story">
+  <div class="wrap split flip">
+    <figure><img src="img/sections/story.webp" alt="Hands pouring a test formula into a glass bottle among lemons, lavender and jasmine" loading="lazy" width="1536" height="1024"></figure>
+    <div class="body">
       <div>
-        <h2>It started with a question at home.</h2>
-        <p class="lede">Why do the cleaners that work best feel the harshest, and why do the gentle ones give up halfway?</p>
+        <h2>Our Story</h2>
+        <p class="lead">It started with a question at home.</p>
       </div>
+      <p class="muted">Why do the cleaners that work best feel the harshest, and why do the gentle ones give up halfway?</p>
       <ol class="steps">
-        <li><h3>The search</h3><p>We wanted products that could handle real Indian homes, from greasy kadais to monsoon floors, without leaving harsh chemicals behind.</p></li>
-        <li><h3>The first formula</h3><p>We kept testing until tough and gentle sat in the same bottle: biodegradable, free of artificial colouring and honest about what it does.</p></li>
-        <li><h3>Shinox today</h3><p>Nine products for every room, from the kitchen and bathroom to the family silver, each made to one promise of shine you can trust.</p></li>
+        <li><h3>The search</h3><p>Products that could handle real Indian homes, from greasy kadais to monsoon floors, without leaving harsh chemicals behind.</p></li>
+        <li><h3>The first formula</h3><p>We kept testing until tough and gentle sat in the same bottle, free of artificial colouring and honest about what it does.</p></li>
+        <li><h3>Shinox today</h3><p>Nine specialised home-care solutions for personal care, fresh spaces, spotless floors, sparkling surfaces, clean kitchens and well-kept fabrics.</p></li>
       </ol>
+      <p class="also">Beyond cleaning, our range extends to bamboo-based face tissues, tissue napkins, kitchen napkins, toilet rolls and garbage covers, chosen for modern living.</p>
     </div>
-    <div class="mission">
-      <p><small>Our mission</small>To be the cleaner people trust: brilliant on every surface, gentle on every hand, and kind to the earth it returns to.</p>
-      <p><small>Our vision</small>A home where a spotless floor and a healthy planet are the same choice.</p>
+  </div>
+</section>
+
+<section id="mission">
+  <div class="wrap split">
+    <figure><img src="img/sections/mission.webp" alt="A mother and daughter folding fresh laundry in a bright, clean living room" loading="lazy" width="1536" height="1024"></figure>
+    <div class="body">
+      <div>
+        <h2>Mission &amp; Vision</h2>
+        <p class="lead">Because true cleanliness goes beyond appearances.</p>
+      </div>
+      <div class="mv">
+        <article><h3>Our vision</h3><p>To set the standard for powerful, affordable hygiene solutions.</p></article>
+        <article><h3>Our mission</h3><p>To deliver exceptional home-care and hygiene solutions that combine performance, quality and everyday comfort, while championing bamboo-based essentials, responsible innovation and sustainable choices for cleaner homes, healthier lifestyles and a better tomorrow.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="head">
+      <h2>Our Team</h2>
+      <p>The people behind every bottle of Shinox.</p>
+    </div>
+    <div class="team">
+      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Founder name</b><span>Founder</span><small>Photo and bio coming soon</small></div></div>
+      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Co-founder name</b><span>Co-founder</span><small>Photo and bio coming soon</small></div></div>
+    </div>
+    <p class="team-label">Core team</p>
+    <div class="team core">
+      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Name</b><span>Role</span></div></div>
+      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Name</b><span>Role</span></div></div>
+      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Name</b><span>Role</span></div></div>
+      <div class="person"><div class="ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8"/></svg></div><div><b>Name</b><span>Role</span></div></div>
     </div>
   </div>
 </section>
@@ -357,14 +448,14 @@ footer .logo{width:112px}
 <section id="contact">
   <div class="wrap contact">
     <div class="side">
-      <h2>Let’s talk.</h2>
-      <p>Questions about a product, a stubborn stain, or stocking Shinox in your store? Send us a note and we’ll reply.</p>
-      <address>
-        <a href="mailto:info.shinox@gmail.com">info.shinox@gmail.com</a><br>
-        SHINOX, #G 12, Prabhavathi Windsor, 3rd Cross Road<br>
-        BTM Layout 4th Stage, D C Halli, B G Road<br>
-        Bengaluru 560076
-      </address>
+      <h2>Get in touch.</h2>
+      <p>Questions about a product, bulk orders, refill pouches, or stocking Shinox in your store? Call us or send a note.</p>
+      <ul class="reach">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg><div><a href="tel:+919916699906">+91 99166 99906</a><br><a href="tel:+919900096443">+91 99000 96443</a></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:info@shinox.biz">info@shinox.biz</a></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><a href="https://www.instagram.com/shinoxofficial.india/" rel="noopener" target="_blank">@shinoxofficial.india</a></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><div>Bengaluru, Karnataka, India<small>#G 12, Prabhavathi Windsor, 3rd Cross Road, BTM Layout 4th Stage, D C Halli, B G Road, Bengaluru 560076</small></div></li>
+      </ul>
     </div>
     <form id="form" novalidate>
       <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
@@ -380,7 +471,7 @@ footer .logo{width:112px}
 
 <footer>
   <div class="wrap">
-    <a class="mark" href="#top" aria-label="Back to top"><span class="logo"></span></a>
+    <div class="brand"><a class="mark" href="#top" aria-label="Back to top"><span class="logo"></span></a><span class="tag">Make It Shine</span></div>
     <span>Manufactured by Lakshmi Enterprises, Bengaluru. UDYAM-KR-03-0583718</span>
     <span>© <span id="yr"></span> Shinox</span>
   </div>
@@ -400,6 +491,7 @@ footer .logo{width:112px}
     <div class="chips" id="d-chips"></div>
     <p class="quote" id="d-quote"></p>
     <p class="desc" id="d-desc"></p>
+    <ul class="feats" id="d-feats"></ul>
     <dl class="facts" id="d-facts"></dl>
     <div class="actions"><a class="btn" id="d-ask" href="#contact">Ask about this product</a></div>
     <div class="pager"><button id="d-prev"></button><button id="d-next"></button></div>
@@ -408,69 +500,98 @@ footer .logo{width:112px}
 
 <script>
 const VIEWS=['Front','Back','Side','Side'];
+// Product data from the Shinox catalogue (descriptions, highlights, sizes, retail MRP) and the bottle labels (quotes).
 const P=[
- {id:"floor",name:"Floor Cleaner",room:"Floors",group:"Floors",h:1,size:"500 ml",
-  quote:"Finally, therapy that works one mop stroke at a time.",
-  desc:"Lifts mud, spills and footprints from tile, marble and stone, and leaves the room calm and fresh.",
-  use:"Add to your mop bucket",
-  v:[{n:"Lemon",k:"floor-lemon",c:"#F2C94C",t:"#FBF4D9",views:[0,1,2,3]},{n:"Lavender",k:"floor-lavender",c:"#9B7BC8",t:"#F1EAF7",views:[0,1,2,3]},{n:"Orange",k:"floor-orange",c:"#F08A3C",t:"#FDECDF",views:[0,1,2,3]}]},
- {id:"dish",name:"Dish Wash Liquid",room:"Kitchen",group:"Kitchen",h:1,size:"500 ml",
-  quote:"Lemon with a mission, and grease on the run.",
-  desc:"A citrus care formula that clears oil from kadais and plates and keeps your hands comfortable. Nothing sticky survives.",
-  use:"A few drops on a wet scrubber",
-  v:[{n:"Citrus",k:"dishwash",c:"#F2C94C",t:"#FBF4D9",views:[0,1,2,3]}]},
- {id:"glass",name:"Glass Cleaner",room:"Mirrors and windows",group:"Bathroom",h:1.02,size:"500 ml",
-  quote:"Fingerprints are denied entry. Smudges lose their passes.",
-  desc:"Streak-free shine on mirrors, windows and glass tops. Spray, wipe, done.",
-  use:"Spray and wipe with a dry cloth",
-  v:[{n:"Original",k:"glass",c:"#3FB4E6",t:"#E2F2F9",views:[0,1]}]},
- {id:"toilet",name:"Toilet Cleaner",room:"Bathroom",group:"Bathroom",h:1.05,size:"500 ml",
-  quote:"The judge, jury and executioner for stains.",
-  desc:"An angled nozzle reaches under the rim to clear stains and leave the bowl fresh.",
-  use:"Apply under the rim, wait, then flush",
-  v:[{n:"Original",k:"toilet",c:"#1F4FB5",t:"#E4EAF7",views:[0,1]}]},
- {id:"hand",name:"Hand Wash",room:"Hands",group:"Bathroom",h:.82,size:"250 ml",
-  quote:"Wash away the mess, not your skin’s happiness.",
-  desc:"Made with coconut oil. It foams well and leaves hands soft, never tight.",
-  use:"Pump, lather, rinse",
-  v:[{n:"Coco Lemon",k:"hand-lemon",c:"#F2C94C",t:"#F7F1DA",views:[0,2,3]},{n:"Coco Lavender",k:"hand-lavender",c:"#9B7BC8",t:"#EFEAF5",views:[0,2,3]},{n:"Coco Rose",k:"hand-rose",c:"#D6455A",t:"#F8E8EA",views:[0,1]}]},
- {id:"mist",name:"Herbal Mist",room:"Air freshener",group:"Every room",h:.84,size:"250 ml",
+ {id:"mist",name:"Herbal Mist",room:"Air freshener",group:"Every room",h:.80,size:"250 ml",mrp:"₹299",avail:"250 ml bottle, 5 litre can",
   quote:"Bad smells? They’ve officially been evicted.",
-  desc:"Freshness made with herbal water, for any room that needs a calmer air.",
+  desc:"Crafted with gentle herbal water: tough on bad odours yet kind enough to be safe on skin. It neutralises odours instead of just masking them, so freshness actually lasts.",
+  feats:["Herbal water infused","Long-lasting freshness","Nature-friendly","Natural essential oils","No artificial colouring"],
   use:"Spray into the air, away from your face",
   v:[{n:"Breeze",k:"mist-breeze",c:"#48B7C9",t:"#E2F1F3",views:[0,2,3]},{n:"Jasmine",k:"mist-jasmine",c:"#E3B54A",t:"#F8F0DE",views:[0,2,3]},{n:"Lemon",k:"mist-lemon",c:"#F2C94C",t:"#F7F1DA",views:[0,2,3]},{n:"Rose",k:"mist-rose",c:"#D6455A",t:"#F8E8EA",views:[0,2,3]}]},
- {id:"fabric",name:"Fabric Care",room:"Laundry",group:"Laundry",h:1.12,size:"Front load and top load",
+ {id:"hand",name:"Hand Wash",room:"Hands",group:"Bathroom",h:.78,size:"250 ml",mrp:"₹209",avail:"250 ml bottle, 5 litre can, 1 L, 2 L and 5 L refill pouches",
+  quote:"Wash away the mess, not your skin’s happiness.",
+  desc:"Effective germ protection with the moisturising goodness of coconut oil. It cleans hands thoroughly while keeping them soft, smooth and hydrated.",
+  feats:["Germ protection","Moisturising formula","Gentle on hands","Lavender, rose and lemon","No artificial colouring"],
+  use:"Pump, lather, rinse",
+  v:[{n:"Coco Lemon",k:"hand-lemon",c:"#F2C94C",t:"#F7F1DA",views:[0,2,3]},{n:"Coco Rose",k:"hand-rose",c:"#D6455A",t:"#F8E8EA",views:[0,1]},{n:"Coco Lavender",k:"hand-lavender",c:"#9B7BC8",t:"#EFEAF5",views:[0,2,3]}]},
+ {id:"floor",name:"Floor Cleaner",room:"Floors",group:"Floors",h:.90,size:"500 ml",mrp:"₹239",avail:"500 ml bottle, 5 litre can, 1 L, 2 L and 5 L refill pouches",
+  quote:"Finally, therapy that works one mop stroke at a time.",
+  desc:"Removes dirt, grime and odour-causing bacteria, leaving floors sparkling clean and hygienic. In refreshing lemon, lavender and orange.",
+  feats:["No sticky residue","Instant dry","Calm aroma","Instant hygienic boost"],
+  use:"Add to your mop bucket",
+  v:[{n:"Lemon",k:"floor-lemon",c:"#F2C94C",t:"#FBF4D9",views:[0,1,2,3]},{n:"Lavender",k:"floor-lavender",c:"#9B7BC8",t:"#F1EAF7",views:[0,1,2,3]},{n:"Orange",k:"floor-orange",c:"#F08A3C",t:"#FDECDF",views:[0,1,2,3]}]},
+ {id:"fabric",name:"Fabric Care",room:"Laundry",group:"Laundry",h:1,size:"1 litre",mrp:"₹579",avail:"1 litre bottle, 5 litre can, 1 L, 2 L and 5 L refill pouches",
   quote:"Every outfit deserves a standing ovation.",
-  desc:"Gives tired clothes a comeback: less dullness, fewer wrinkles, soft and fresh. Even an old T-shirt looks new again.",
+  desc:"The wardrobe wingman that keeps clothes looking sharp and smelling confidently fresh. Gentle on fibres, so your favourite outfits don’t age before you do.",
+  feats:["Gentle on fibres","Keeps colours bright","Reduces wear and tear","No softener needed","For front and top load"],
   use:"100 ml for a 7 kg load. Don’t mix with other detergents",
   v:[{n:"Front load",k:"fabric-front",c:"#01543F",t:"#E6F0EC",views:[0,1]},{n:"Top load",k:"fabric-top",c:"#5C8F80",t:"#E6F0EC",views:[0,1]}]},
- {id:"metal",name:"Metal Cleaner",room:"Brass, copper and steel",group:"Metal and silver",h:.84,size:"250 ml",
+ {id:"dish",name:"Dish Wash Liquid",room:"Kitchen",group:"Kitchen",h:.90,size:"500 ml",mrp:"₹219",avail:"500 ml bottle, 5 litre can, 1 L, 2 L and 5 L refill pouches",
+  quote:"Lemon with a mission, and grease on the run.",
+  desc:"Your kitchen’s secret weapon, built to fight grease, grime and everyday mess with zero mercy, while staying gentle on hands.",
+  feats:["Moisture care formula","Fresh citrus aroma","Active foam","Sparkling shine"],
+  use:"A few drops on a wet scrubber",
+  v:[{n:"Citrus",k:"dishwash",c:"#F2C94C",t:"#FBF4D9",views:[0,1,2,3]}]},
+ {id:"glass",name:"Glass Cleaner",room:"Mirrors and windows",group:"Bathroom",h:.93,size:"500 ml",mrp:"₹215",avail:"500 ml spray, 5 litre can",
+  quote:"Fingerprints are denied entry. Smudges lose their passes.",
+  desc:"Gives glass the clarity that makes you stop and admire your own reflection. One spray, one wipe, and your screen looks smarter than you do on a Monday morning.",
+  feats:["Fast drying","Not harmful to skin","Not harmful to eyes","Streak-free finish","No artificial colouring"],
+  use:"Spray and wipe with a dry cloth",
+  v:[{n:"Original",k:"glass",c:"#3FB4E6",t:"#E2F2F9",views:[0,1]}]},
+ {id:"metal",name:"Metal Cleaner",room:"Brass, copper and steel",group:"Metal and silver",h:.80,size:"250 ml",mrp:"₹229",avail:"250 ml spray, 5 litre can",
   quote:"Like a bouncer for rust.",
-  desc:"Harsh on dullness, soft on hands, and respectful to metal. It cleans without wearing away the original shine.",
-  use:"Spray, leave briefly, wipe",
+  desc:"Oxidation is natural, but looking ancient is optional. Helps brass, copper, steel and iron ditch the dullness and reclaim their glory.",
+  feats:["Removes tough stains","Corrosion protection","Fast acting","Brass, copper and steel","No artificial colouring"],
+  use:"On a dry item: spray evenly, leave 3 minutes, scrub, rinse under running water, wipe dry",
   v:[{n:"Original",k:"metal",c:"#B8954A",t:"#F2EDE3",views:[0,2,3]}]},
- {id:"silver",name:"Silver Cleaner",room:"Silver",group:"Metal and silver",h:.84,size:"250 ml",
+ {id:"silver",name:"Silver Cleaner",room:"Silver",group:"Metal and silver",h:.80,size:"250 ml",mrp:"₹229",avail:"250 ml spray, 5 litre can",
   quote:"Shine that knows its limits.",
-  desc:"Kind to your hands, cruel to tarnish. No metal erosion and no harsh surprises, so your silver stays silver.",
-  use:"Spray, leave briefly, wipe",
-  v:[{n:"Original",k:"silver",c:"#A9B0B5",t:"#ECEFF1",views:[0,2,3]}]}
+  desc:"Even silver has dull days. Blame the tarnish, not the jewellery. Shinox brings the shine back without the drama, and your silver stays silver.",
+  feats:["Removes tough stains","Corrosion protection","Fast acting","Brilliant mirror finish","No artificial colouring"],
+  use:"On a dry article: spray evenly, leave 3 minutes, scrub, rinse under running water, wipe dry",
+  v:[{n:"Original",k:"silver",c:"#A9B0B5",t:"#ECEFF1",views:[0,2,3]}]},
+ {id:"toilet",name:"Toilet Cleaner",room:"Bathroom",group:"Bathroom",h:.96,size:"500 ml",mrp:"₹199",avail:"500 ml bottle, 5 litre can",
+  quote:"The judge, jury and executioner for stains.",
+  desc:"A powerful disinfectant formula that cuts through tough stains, removes germs, eliminates bad odours and keeps your toilet spotless, fresh and safe to use.",
+  feats:["Crystal shine finish","360° cleaning swirl","Protective germ shield","Odour lock","Stain removal power"],
+  use:"Apply under the rim, wait, then flush",
+  v:[{n:"Original",k:"toilet",c:"#1F4FB5",t:"#E4EAF7",views:[0,1]}]}
 ];
 const src=(k,n)=>`img/v/${k}-${n}.webp`;
 // which variant appears in each product's lifestyle photo (img/life/<id>.webp)
-const LIFE={floor:0,dish:0,glass:0,toilet:0,hand:2,mist:1,fabric:0,metal:0,silver:0};
+const LIFE={floor:0,dish:0,glass:0,toilet:0,hand:1,mist:1,fabric:0,metal:0,silver:0};
 P.forEach(p=>p.life=LIFE[p.id]);
 const $=id=>document.getElementById(id);
-const pick=P.map(()=>0); // chosen variant per product
+const pick=P.map(()=>0);
+const label=(p,v)=>(p.v.length>1?p.v[v].n+' ':'')+p.name;
 
-/* shelf */
+/* shelf: every variant, grouped by product */
+let si=0;
 P.forEach((p,i)=>{
-  const b=document.createElement('button');
-  b.style.setProperty('--i',i);
-  b.setAttribute('aria-label',`${p.name}, open details`);
-  b.innerHTML=`<img src="img/shelf/${p.v[0].k}.webp" alt="" style="--h:${p.h/1.12}"><span class="tag">${p.name}</span>`;
-  b.onclick=()=>openSheet(i,0);
-  $('shelf').appendChild(b);
+  if(i) $('shelf').insertAdjacentHTML('beforeend','<span class="shelf-gap"></span>');
+  const g=document.createElement('div');g.className='shelf-group';g.style.setProperty('--n',p.v.length*(p.id==='fabric'?1.5:1));
+  p.v.forEach((v,j)=>{
+    const b=document.createElement('button');b.style.setProperty('--i',si++);
+    b.setAttribute('aria-label',`${label(p,j)}, open details`);
+    b.innerHTML=`<img src="img/shelf/${v.k}.webp" alt="" style="--h:${p.h}"><span class="tag">${label(p,j)}</span>`;
+    b.onclick=()=>openSheet(i,j);g.appendChild(b);
+  });
+  $('shelf').appendChild(g);
 });
+// size the shelf so every bottle is drawn by height (same size = same height) and the row fits the width
+function fitShelf(){
+  const row=$('shelf'),imgs=[...row.querySelectorAll('img')];
+  if(imgs.some(i=>!i.naturalWidth)) return;
+  const sum=imgs.reduce((s,i)=>s+i.naturalWidth/i.naturalHeight*parseFloat(i.style.getPropertyValue('--h')),0);
+  const gaps=(P.length-1)*12+(imgs.length-P.length)*4;
+  const avail=row.parentElement.clientWidth-32;
+  const sh=Math.max(170,Math.min(330,window.innerHeight*.42,(avail-gaps)/sum));
+  row.style.setProperty('--sh',sh+'px');
+  const need=sum*sh+gaps;
+  document.querySelector('.shelf').style.setProperty('--sw',need>avail?need+'px':'0px');
+}
+$('shelf').querySelectorAll('img').forEach(i=>i.addEventListener('load',fitShelf));
+addEventListener('resize',fitShelf);fitShelf();
 
 /* grid */
 P.forEach((p,i)=>{
@@ -478,9 +599,9 @@ P.forEach((p,i)=>{
   t.className='tile';t.dataset.group=p.group;t.style.setProperty('--tint',p.v[0].t);
   const multi=p.v.length>1;
   t.innerHTML=`<button class="open" aria-label="${p.name}, open details"></button>
-   <div class="meta"><span>${p.room}</span><span>${p.size}</span></div>
+   <div class="meta"><span>${p.room}</span><b>MRP ${p.mrp}</b></div>
    <div class="pic"><img src="${src(p.v[0].k,0)}" alt="Shinox ${p.name} bottle" loading="lazy"></div>
-   <div class="foot"><div><h3>${p.name}</h3><div class="sub">${multi?p.v.length+(p.id==='fabric'?' types':' scents'):p.v[0].n==='Original'?'':p.v[0].n}</div></div>
+   <div class="foot"><div><h3>${p.name}</h3><div class="sub">${multi?p.v.length+(p.id==='fabric'?' types':' scents')+', ':''}${p.size}</div></div>
    ${multi?`<div class="dots" role="group" aria-label="${p.name} options">${p.v.map((v,j)=>`<button aria-pressed="${j===0}" aria-label="${v.n}" title="${v.n}" style="--c:${v.c}"><i></i></button>`).join('')}</div>`:''}</div>`;
   t.querySelector('.open').onclick=()=>openSheet(i,pick[i]);
   t.querySelectorAll('.dots button').forEach((d,j)=>{
@@ -493,7 +614,6 @@ P.forEach((p,i)=>{
   });
   $('grid').appendChild(t);
 });
-/* preload variant fronts once idle */
 (window.requestIdleCallback||setTimeout)(()=>P.forEach(p=>p.v.slice(1).forEach(v=>{new Image().src=src(v.k,0)})));
 
 /* at home strip */
@@ -518,23 +638,21 @@ $('filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{
 
 /* product sheet */
 const sheet=$('sheet'),view=$('d-view'),dimg=$('d-img');
-const cur={p:0,v:0,view:0};
-function openSheet(i,v){
-  setProduct(i,v);
-  if(!sheet.open){sheet.showModal();document.body.classList.add('locked')}
-}
+const cur={p:0,v:0,view:0,items:[]};
+function openSheet(i,v){setProduct(i,v);if(!sheet.open){sheet.showModal();document.body.classList.add('locked')}}
 function setProduct(i,v){
   cur.p=i;cur.v=v;const p=P[i];pick[i]=v;
   $('d-room').textContent=p.room;
-  $('d-name').textContent=(p.v.length>1?p.v[v].n+' ':'')+p.name;
+  $('d-name').textContent=label(p,v);
   $('d-quote').textContent=`“${p.quote}”`;
   $('d-desc').textContent=p.desc;
+  $('d-feats').innerHTML=p.feats.map(f=>`<li>${f}</li>`).join('');
   $('d-chips').innerHTML=p.v.length>1?p.v.map((x,j)=>`<button aria-pressed="${j===v}" style="--c:${x.c}"><i></i>${x.n}</button>`).join(''):'';
   $('d-chips').querySelectorAll('button').forEach((b,j)=>b.onclick=()=>setProduct(i,j));
-  $('d-facts').innerHTML=`<div><dt>Size</dt><dd>${p.size}</dd></div><div><dt>How to use</dt><dd>${p.use}</dd></div><div><dt>Made to be</dt><dd>Biodegradable, with no artificial colouring</dd></div>`;
+  $('d-facts').innerHTML=`<div><dt>MRP</dt><dd>${p.mrp} for ${p.size}</dd></div><div><dt>Available in</dt><dd>${p.avail}</dd></div><div><dt>How to use</dt><dd>${p.use}</dd></div>`;
   const pr=P[(i-1+P.length)%P.length],nx=P[(i+1)%P.length];
   $('d-prev').innerHTML=`Previous<b>${pr.name}</b>`;$('d-next').innerHTML=`Next<b>${nx.name}</b>`;
-  sheet.style.setProperty('--tint',p.v[v].t);$('d-gallery').style.setProperty('--tint',p.v[v].t);
+  $('d-gallery').style.setProperty('--tint',p.v[v].t);
   const vv=p.v[v];
   const items=vv.views.map(n=>({src:src(vv.k,n),thumb:src(vv.k,n),label:VIEWS[n],life:false}));
   const life={src:`img/life/${p.id}.webp`,thumb:`img/life/${p.id}-sm.webp`,label:'In use',life:true};
@@ -544,7 +662,7 @@ function setProduct(i,v){
   $('d-thumbs').querySelectorAll('button').forEach((b,j)=>b.onclick=()=>setView(j));
   setView(0);
   $('d-ask').onclick=()=>{$('f-msg').value=`Hi, I'd like to know more about Shinox ${$('d-name').textContent}.`;closeSheet()};
-  history.replaceState(null,'',`#p/${p.v[v].k}`);
+  history.replaceState(null,'',`#p/${vv.k}`);
 }
 function setView(j){
   cur.view=j;const p=P[cur.p],vv=p.v[cur.v],it=cur.items[j];
@@ -574,11 +692,10 @@ sheet.addEventListener('click',e=>{if(e.target===sheet)closeSheet()});
 $('d-prev').onclick=()=>setProduct((cur.p-1+P.length)%P.length,0);
 $('d-next').onclick=()=>setProduct((cur.p+1)%P.length,0);
 sheet.addEventListener('keydown',e=>{
-  const vs=cur.items.length;
-  if(e.key==='ArrowRight'){e.preventDefault();setView((cur.view+1)%vs)}
-  if(e.key==='ArrowLeft'){e.preventDefault();setView((cur.view-1+vs)%vs)}
+  const n=cur.items.length;
+  if(e.key==='ArrowRight'){e.preventDefault();setView((cur.view+1)%n)}
+  if(e.key==='ArrowLeft'){e.preventDefault();setView((cur.view-1+n)%n)}
 });
-/* deep link: #p/floor-lavender */
 const m=location.hash.match(/^#p\/([\w-]+)/);
 if(m){P.forEach((p,i)=>p.v.forEach((v,j)=>{if(v.k===m[1])openSheet(i,j)}))}
 
@@ -593,7 +710,7 @@ $('form').addEventListener('submit',e=>{
   const missing=[...f.querySelectorAll('[required]')].filter(x=>!x.value.trim()||(x.type==='email'&&!x.checkValidity()));
   if(missing.length){note.textContent=`Add your ${missing.map(x=>x.labels[0].textContent.toLowerCase()).join(', ')} to send the message.`;missing[0].focus();return}
   const body=`${f.message.value}\n\n${f.name.value}\n${f.email.value}${f.phone.value?'\n'+f.phone.value:''}`;
-  location.href=`mailto:info.shinox@gmail.com?subject=${encodeURIComponent('Message from '+f.name.value)}&body=${encodeURIComponent(body)}`;
+  location.href=`mailto:info@shinox.biz?subject=${encodeURIComponent('Message from '+f.name.value)}&body=${encodeURIComponent(body)}`;
   note.textContent='Your email app has opened with the message. Press send there to reach us.';
 });
 $('yr').textContent=new Date().getFullYear();
